@@ -1,5 +1,11 @@
 テーマ：「m0s Portfolio」
 目的：自分の世界観を表現するWebサイトを作る
+
+m0s_portfolio/
+├── index.html
+├── style.css
+└── images/
+
 構成：
 TOP
 │
@@ -11,3 +17,37 @@ TOP
 │
 └ CONTACT
 
+HTML
+
+必要なタグだけ考えて作る。
+
+* header
+* nav
+* section
+* main
+* article
+* footer
+
+⸻
+
+CSS
+
+自分で次のプロパティを使ってみる。
+
+* display: flex
+* justify-content
+* align-items
+* flex-direction
+* gap
+* flex-wrap
+
+LOGO                    Home About Contact
+
+          m0s Portfolio
+     Web Creator / Rapper
+
+        [View Works]
+
+□ Project1   □ Project2   □ Project3
+
+      ©2026 m0s
