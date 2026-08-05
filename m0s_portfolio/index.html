@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>m0s_portfolio</title>
 </head>
+
 <body>
-  <!-- ヘッダー -->
-  <header class="header">
-   <img src="images/m0s_logo.png" alt="ロゴ">
-   <nav class="menu">
-    <a href="#home">Home</a>
-    <a href="#works">Works</a>
-    <a href="#contact">Contact</a>
-   </nav>
-  </header>
-  <!-- ヒーロー -->
-   <section class="hero">
-     <h2>m0s</h2>
-     <p>Rapper/Creator</p>
-     <button>View Work</button>
+  <main id="home">
+    <!-- ヘッダー -->
+    <header class="header">
+      <img src="images/m0s_logo.png" alt="ロゴ">
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#works">Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <!-- ヒーロー -->
+    <section class="hero">
+      <h2>m0s</h2>
+      <p>Rapper/Creator</p>
+      <button>View Work</button>
     </section>
 
     <div class="container">
@@ -31,40 +34,54 @@
       </div>
     </div>
 
-    <section class="projects">
-      <div class="card">
-        <h2>Project 1</h2>
-        <p>Web Design</p>
-      </div>
-      <div class="card">
-        <h2>Project 2</h2>
-        <p>Music</p>
-      </div>
-      <div class="card">
-        <h2>Project 3</h2>
-        <p>Car</p>
-      </div>
+    <!-- プロジェクト -->
+    <section class="projects" id="works">
+      <a href="#project1">
+        <div class="card">
+          <h2>Project 1</h2>
+          <p>Web Design</p>
+        </div>
+      </a>
+      <a href="#project2">
+        <div class="card">
+          <h2>Project 2</h2>
+          <p>Music</p>
+        </div>
+      </a>
+      <a href="#project3">
+        <div class="card">
+          <h2>Project 3</h2>
+          <p>Car</p>
+        </div>
+      </a>
     </section>
 
-    <article>
-      <div>趣味</div>
-      <h4>音楽・映画・車</h4>
-      <div>好きな映画</div>
-      <ul>
-        <li>GREATEST SHOWMAN</li>
-        <li>BATTER MAN</li>
-        <li>Fast & Furious</li>
-      </ul>
-      <div">好きな音楽(ジャンル)</div>
-      <ul>
-        <li>HIPHOP</li>
-        <li>Classic</li>
-        <li>K-POP</li>
-      </ul>
+    <!-- プロジェクト詳細 -->
+    <article class="project">
+      <section id="project1">
+        <h2>Project 1</h2>
+        <p>HTML/CSS</p>
+      </section>
+      <section id="project2">
+        <h2>Project 2</h2>
+        <a href="https://music.apple.com/jp/artist/m0s/1777272779">Apple Music</a>
+      </section>
+      <section id="project3">
+        <h2>Project 3</h2>
+        <p>Tesla</p>
+      </section>
     </article>
 
-    <footer>
-      <p>&copy; 2026 m0s_portfolio. All rights reserved</p>
-    </footer>
-  </body>
+
+  </main>
+  <footer>
+    <section class="contact" id="contact">
+      <h2>-- Contact --</h2>
+      <p>お問い合わせは以下のメールアドレスまでご連絡ください。</p>
+      <a href="mailto:m.s_0127.46@icloud.com">m.s_0127.46@icloud.com</a>
+    </section>
+    <p>&copy; 2026 m0s_portfolio. All rights reserved</p>
+  </footer>
+</body>
+
 </html>
