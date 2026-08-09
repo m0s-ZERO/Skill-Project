@@ -67,12 +67,29 @@ body {
   justify-content: center;
   align-items: center;
 }
+.hero h2{
+  margin: 10px 0;
+}
 
+.hero p{
+  margin: 10px 0;
+}
+#message {
+  font-size: 20px;
+  color: #555;
+  margin-top: 20px;
+}
 .hero button {
   padding: 10px 30px;
   border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
+  margin-top: 20px;
+}
+.active {
+  color: blue;
+  text-align: center;
+  font-size: 30px;
 }
 
 .container {
@@ -88,7 +105,9 @@ body {
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
-
+.projects h2 {
+  margin-bottom: 30px;
+}
 .projects a {
   text-decoration: none;
   transition: 0.3s;
@@ -109,6 +128,12 @@ body {
 
 .project {
   text-align: center;
+}
+#project2 {
+  height: 100px;
+}
+#project2 h2{
+  margin-bottom: 30px;
 }
 
 footer p {
