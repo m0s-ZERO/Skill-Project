@@ -142,15 +142,23 @@ footer p {
   opacity: 0.5;
 }
 
-.contact {
+footer {
   background-color: #f5f5f5;
   padding: 50px 0;
   text-align: center;
-  height: 150px;
 }
 
 .contact p {
   margin-bottom: 30px;
+}
+
+.red-active {
+  color: red;
+  opacity: 1;
+}
+.blue-active {
+  color: blue;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
