@@ -1,3 +1,4 @@
+/* 全体 */
 img {
   border-radius: 50%;
   height: 300px;
@@ -38,6 +39,7 @@ body {
   margin: 0;
 }
 
+/* ヘッダー */
 .header {
   display: flex;
   justify-content: space-between;
@@ -59,6 +61,7 @@ body {
   margin-right: 30px;
 }
 
+/* ヒーロー */
 .hero {
   background-color: #f5f5f5;
   height: 300px;
@@ -67,18 +70,21 @@ body {
   justify-content: center;
   align-items: center;
 }
-.hero h2{
+
+.hero h2 {
   margin: 10px 0;
 }
 
-.hero p{
+.hero p {
   margin: 10px 0;
 }
+
 #message {
   font-size: 20px;
   color: #555;
   margin-top: 20px;
 }
+
 .hero button {
   padding: 10px 30px;
   border-radius: 10px;
@@ -86,18 +92,22 @@ body {
   cursor: pointer;
   margin-top: 20px;
 }
+
+/* [JS]ボタンの追加CSS */
 .active {
   color: blue;
   text-align: center;
   font-size: 30px;
 }
 
+/* プロフィール */
 .container {
   text-align: center;
   height: 500px;
   margin-top: 50px;
 }
 
+/* プロジェクト */
 .projects {
   display: flex;
   gap: 30px;
@@ -105,9 +115,11 @@ body {
   flex-wrap: wrap;
   margin-bottom: 50px;
 }
+
 .projects h2 {
   margin-bottom: 30px;
 }
+
 .projects a {
   text-decoration: none;
   transition: 0.3s;
@@ -118,6 +130,7 @@ body {
   border: 0.5px solid blue;
 }
 
+/* カード */
 .card {
   width: 180px;
   height: 130px;
@@ -130,18 +143,23 @@ body {
 .project {
   text-align: center;
 }
+
 #project2 a {
   display: inline-block;
   margin-bottom: 10px;
 }
-.work-title{
+
+/* [JS]プロジェクト一覧のCSS */
+.work-title {
   font-size: 20px;
 }
-.work-category{
+
+.work-category {
   font-size: 15px;
   margin-bottom: 20px;
 }
 
+/* フッター */
 footer p {
   font-size: 20px;
   text-align: center;
@@ -158,15 +176,18 @@ footer {
   margin-bottom: 30px;
 }
 
+/* [JS]名前入力欄のCSS */
 .red-active {
   color: red;
   opacity: 1;
 }
+
 .blue-active {
   color: blue;
   opacity: 1;
 }
 
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .header {
     height: auto;

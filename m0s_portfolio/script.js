@@ -35,7 +35,7 @@ const works = [
     title: "Grow Value up",
     category: "(Music)",
   },
-{
+  {
     title: "NRS T-shirt",
     category: "(Design)",
   }
