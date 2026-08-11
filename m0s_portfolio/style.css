@@ -126,14 +126,20 @@ body {
   justify-content: center;
 }
 
+/*プロジェクト詳細*/
 .project {
   text-align: center;
 }
-#project2 {
-  height: 100px;
+#project2 a {
+  display: inline-block;
+  margin-bottom: 10px;
 }
-#project2 h2{
-  margin-bottom: 30px;
+.work-title{
+  font-size: 20px;
+}
+.work-category{
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
 footer p {
