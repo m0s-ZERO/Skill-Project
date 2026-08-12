@@ -51,4 +51,12 @@ for (let i = 0; i < works.length; i++) {
   project.appendChild(workCategory);
   workTitle.classList.toggle("work-title");
   workCategory.classList.toggle("work-category");
+
+  // Day12：クリックイベント
+  project.addEventListener("click", function(event){
+  console.log("クリックされた要素：" + event.target.textContent);
+  console.log("タイトル：" + workTitle.textContent);
+  console.log("カテゴリー：" + workCategory.textContent);
+})
 }
+
