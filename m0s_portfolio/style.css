@@ -149,6 +149,22 @@ body {
   margin-bottom: 10px;
 }
 
+/* [JS]クリックしたプロジェクト詳細のCSS */
+#detail-text {
+  font-size: 25px;
+  margin: 15px 0 8px 0;
+  color: red;
+}
+
+.detail-title {
+  color: red;
+}
+
+.detail-category {
+  margin-bottom: 30px;
+  color: red;
+}
+
 /* [JS]プロジェクト一覧のCSS */
 .work-title {
   font-size: 20px;
