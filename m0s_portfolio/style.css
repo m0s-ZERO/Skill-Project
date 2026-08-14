@@ -154,18 +154,19 @@ body {
   font-size: 25px;
   margin: 15px 0 8px 0;
   color: red;
-  display:none;
+  display: none;
 }
 
-#detail-text.show-detail{
-  display:block;
-}
-#work-detail{
-  display:none;
+#detail-text.show-detail {
+  display: block;
 }
 
-#work-detail.show-detail{
-  display:block;
+#work-detail {
+  display: none;
+}
+
+#work-detail.show-detail {
+  display: block;
 }
 
 .detail-title {
