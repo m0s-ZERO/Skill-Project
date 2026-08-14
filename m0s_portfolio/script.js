@@ -69,6 +69,18 @@ for (let i = 0; i < works.length; i++) {
     console.log("タイトル：" + workTitle.textContent);
     console.log("カテゴリー：" + workCategory.textContent);
     console.log("クリックされた要素：" + event.target.textContent);
+
+    // Day14
+    detailText.classList.toggle("show-detail");
+    detail.classList.toggle("show-detail");
+    if (detailText.classList.contains("show-detail")) {
+      console.log("テキストが表示されています");
+    }
+    if (detail.classList.contains("show-detail")) {
+      console.log("詳細が表示されています");
+    }
   })
+
+
 }
 
