@@ -80,7 +80,7 @@ for (let i = 0; i < works.length; i++) {
       console.log("詳細が表示されています");
     }
 
-    // Day15
+    // Day15,
     if (workTitle.textContent === "Skill Project") {
       console.log("タイトル：" + workTitle.textContent + "が選択されました");
       console.log("タイトル：" + workCategory.textContent + "が選択されました");
@@ -92,6 +92,18 @@ for (let i = 0; i < works.length; i++) {
       console.log("タイトル：" + workCategory.textContent + "が選択されました");
     }
 
+    // Day16
+    function Click(title, category) {
+      console.log("タイトル：" + title + "が選択されました");
+      console.log("タイトル：" + category + "が選択されました");
+    }
+    Click(workTitle.textContent, workCategory.textContent);
+
+    function getWorkInfo(title, category) {
+      return "タイトル：" + title + "/ カテゴリー：" + category;
+    }
+    const result = getWorkInfo(workTitle.textContent, workCategory.textContent);
+    console.log(result);
+
   })
 }
-
