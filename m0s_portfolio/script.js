@@ -79,8 +79,19 @@ for (let i = 0; i < works.length; i++) {
     if (detail.classList.contains("show-detail")) {
       console.log("詳細が表示されています");
     }
+
+    // Day15
+    if (workTitle.textContent === "Skill Project") {
+      console.log("タイトル：" + workTitle.textContent + "が選択されました");
+      console.log("タイトル：" + workCategory.textContent + "が選択されました");
+    } else if (workTitle.textContent === "Grow Value up") {
+      console.log("タイトル：" + workTitle.textContent + "が選択されました");
+      console.log("タイトル：" + workCategory.textContent + "が選択されました");
+    } else if (workTitle.textContent === "NRS T-shirt") {
+      console.log("タイトル：" + workTitle.textContent + "が選択されました");
+      console.log("タイトル：" + workCategory.textContent + "が選択されました");
+    }
+
   })
-
-
 }
 
