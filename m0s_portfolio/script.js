@@ -100,10 +100,16 @@ for (let i = 0; i < works.length; i++) {
     Click(workTitle.textContent, workCategory.textContent);
 
     function getWorkInfo(title, category) {
-      return "タイトル：" + title + "/ カテゴリー：" + category;
+      return "タイトル：" + title + " / カテゴリー：" + category;
     }
-    const result = getWorkInfo(workTitle.textContent, workCategory.textContent);
+    const result = getWorkInfo(works[i].title, works[i].category);
     console.log(result);
+
+    // Day17
+    const clickWorkInfo = document.querySelector("#click");
+    const clickInfo = document.createElement("div");
+    clickWorkInfo.textContent = getWorkInfo(works[i].title, works[i].category);
+    clickWorkInfo.appendChild(clickInfo);
 
   })
 }
