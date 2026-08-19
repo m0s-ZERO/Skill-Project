@@ -80,7 +80,7 @@ for (let i = 0; i < works.length; i++) {
       console.log("詳細が表示されています");
     }
 
-    // Day15,
+    // Day15
     if (workTitle.textContent === "Skill Project") {
       console.log("タイトル：" + workTitle.textContent + "が選択されました");
       console.log("タイトル：" + workCategory.textContent + "が選択されました");
@@ -121,5 +121,15 @@ for (let i = 0; i < works.length; i++) {
     const work = document.createElement("div");
     work.textContent = resultWork;
     WorkInfo.appendChild(work);
+
+    // Day19
+    function clickFunc(clickWork) {
+      return clickWork.title + "/" + clickWork.category;
+    }
+    const clickRes = clickFunc(works[i]);
+    console.log("クリックされた要素：" + event.target.textContent);
+    console.log(clickRes);
+    detail.textContent = clickRes;
+
   })
 }
