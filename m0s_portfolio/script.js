@@ -111,5 +111,15 @@ for (let i = 0; i < works.length; i++) {
     clickWorkInfo.textContent = getWorkInfo(works[i].title, works[i].category);
     clickWorkInfo.appendChild(clickInfo);
 
+    // Day18
+    function workInfo(work) {
+      return work.title + "/" + work.category;
+    }
+    const resultWork = workInfo(works[i]);
+    console.log(resultWork);
+    const WorkInfo = document.querySelector("#work-info");
+    const work = document.createElement("div");
+    work.textContent = resultWork;
+    WorkInfo.appendChild(work);
   })
 }
