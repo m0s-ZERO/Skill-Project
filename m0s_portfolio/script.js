@@ -158,23 +158,26 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20
+// Day20,Day21,Day22
 // ① 作品データ
 const works = [
   {
     title: "Skill Project",
     category: "Web",
-    description: "JavaScriptを学習しながら制作しているポートフォリオ"
+    description: "JavaScriptを学習しながら制作しているポートフォリオ",
+    url: "https://github.com/m0s-ZERO/Skill-Project/tree/main/m0s_portfolio"
   },
   {
     title: "Grow Value up",
     category: "Music",
-    description: "m0sが出した曲"
+    description: "m0sが出した曲",
+    url: "https://music.apple.com/jp/song/grow-value-up/1791005208"
   },
   {
     title: "NRS T-shirt",
     category: "Design",
-    description: "高校からの3人組の服作成"
+    description: "高校からの3人組の服作成",
+    url: "https://mochy-nrs.github.io/"
   }
 ];
 
@@ -189,11 +192,17 @@ function getWorkInfo(work) {
 function showWorkInfo(work) {
   const detail = document.querySelector("#work-detail");
   const workElement = document.createElement("div");
+  const link = document.createElement("a");
 
   workElement.textContent = getWorkInfo(work);
 
+  link.textContent = "作品を見る";
+  link.href = work.url;
+  link.target = "_blank";
+
   detail.innerHTML = "";
   detail.appendChild(workElement);
+  detail.appendChild(link);
 }
 
 // ④ 作品一覧を作る
@@ -218,7 +227,7 @@ for (let i = 0; i < works.length; i++) {
   // ⑤ 作品をクリックしたら詳細を表示
   project.addEventListener("click", function (e) {
     console.log("クリックされた要素：" + e.target.textContent);
-
+    console.log(works[i].url);
     showWorkInfo(works[i]);
   });
 }
