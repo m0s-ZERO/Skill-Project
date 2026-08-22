@@ -158,27 +158,31 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-
 // Day20
 // ① 作品データ
 const works = [
   {
     title: "Skill Project",
     category: "Web",
+    description: "JavaScriptを学習しながら制作しているポートフォリオ"
   },
   {
     title: "Grow Value up",
     category: "Music",
+    description: "m0sが出した曲"
   },
   {
     title: "NRS T-shirt",
     category: "Design",
+    description: "高校からの3人組の服作成"
   }
 ];
 
 // ② 作品情報を作る関数
 function getWorkInfo(work) {
-  return "タイトル：" + work.title + " / カテゴリー：" + work.category;
+  return "タイトル：" + work.title
+    + " / カテゴリー：" + work.category
+    + "\n説明：" + work.description;
 }
 
 // ③ 作品情報を画面に表示する関数
@@ -198,12 +202,15 @@ for (let i = 0; i < works.length; i++) {
 
   const workTitle = document.createElement("div");
   const workCategory = document.createElement("div");
+  const workDescription = document.createElement("div");
 
   workTitle.textContent = works[i].title;
   workCategory.textContent = "(" + works[i].category + ")";
+  workDescription.textContent = works[i].description;
 
   project.appendChild(workTitle);
   project.appendChild(workCategory);
+  project.appendChild(workDescription);
 
   workTitle.classList.toggle("work-title");
   workCategory.classList.toggle("work-category");
