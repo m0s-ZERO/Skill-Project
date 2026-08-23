@@ -21,7 +21,7 @@ showButton.addEventListener("click", function () {
     nameMessage.textContent = "名前を入力してください"
   } else {
     nameMessage.classList.toggle("blue-active");
-    nameMessage.textContent = "ありがとうございます！" + nameInput.value + "さん";
+    nameMessage.textContent = nameInput.value + "さん!ありがとうございます！";
   }
 });
 
@@ -158,7 +158,7 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20,Day21,Day22
+// Day20,Day21,Day22,Day23
 // ① 作品データ
 const works = [
   {
@@ -183,7 +183,8 @@ const works = [
 
 // ② 作品情報を作る関数
 function getWorkInfo(work) {
-  return "タイトル：" + work.title
+  return "クリックしたプロジェクト"
+    + "\nタイトル：" + work.title
     + " / カテゴリー：" + work.category
     + "\n説明：" + work.description;
 }
@@ -199,10 +200,14 @@ function showWorkInfo(work) {
   link.textContent = "作品を見る";
   link.href = work.url;
   link.target = "_blank";
+  link.setAttribute("rel", "noopener noreferrer");
 
   detail.innerHTML = "";
   detail.appendChild(workElement);
   detail.appendChild(link);
+  detail.classList.toggle("work-detail");
+  link.classList.toggle("work-detail a");
+
 }
 
 // ④ 作品一覧を作る

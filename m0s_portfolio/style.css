@@ -164,6 +164,11 @@ body {
 #work-detail {
   /* display: none; */
   white-space: pre-line;
+  margin: 25px 0 20px 0;
+}
+#work-detail a{
+  display: inline-block;
+  margin-top: 10px;
 }
 
 #work-detail.show-detail {
@@ -186,7 +191,6 @@ body {
 
 .work-category {
   font-size: 15px;
-  margin-bottom: 20px;
 }
 
 /* フッター */
