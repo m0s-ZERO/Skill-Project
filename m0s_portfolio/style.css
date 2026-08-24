@@ -161,14 +161,15 @@ body {
   display: block;
 }
 
-#work-detail {
+.work-detail {
   /* display: none; */
   white-space: pre-line;
   margin: 25px 0 20px 0;
 }
-#work-detail a{
+.work-link{
   display: inline-block;
   margin-top: 10px;
+  padding: 10px 20px;
 }
 
 #work-detail.show-detail {

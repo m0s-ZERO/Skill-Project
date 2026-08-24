@@ -158,7 +158,7 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20,Day21,Day22,Day23
+// Day20,Day21,Day22,Day23.Day24
 // ① 作品データ
 const works = [
   {
@@ -205,8 +205,8 @@ function showWorkInfo(work) {
   detail.innerHTML = "";
   detail.appendChild(workElement);
   detail.appendChild(link);
-  detail.classList.toggle("work-detail");
-  link.classList.toggle("work-detail a");
+  detail.classList.add("work-detail");
+  link.classList.add("work-link");
 
 }
 
