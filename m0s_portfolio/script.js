@@ -158,7 +158,7 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20,Day21,Day22,Day23.Day24.Day25
+// Day20,Day21,Day22,Day23.Day24.Day25,Day26
 // ① 作品データ
 const works = [
   {
@@ -181,32 +181,25 @@ const works = [
   }
 ];
 
-// ② 作品情報を作る関数
+// 作品情報を作る関数
 function getWorkInfo(work) {
   return "クリックしたプロジェクト"
     + "\nタイトル：" + work.title
     + " / カテゴリー：" + work.category
     + "\n説明：" + work.description;
 }
-
-// ③ 作品情報を画面に表示する関数
-let currentWork = null;
-function showWorkInfo(work) {
-  const detail = document.querySelector("#work-detail");
-  const workElement = document.createElement("div");
+// 作品リンクを作る関数
+function createWorkLink(work) {
   const link = document.createElement("a");
-
-  workElement.textContent = getWorkInfo(work);
-
   link.textContent = "作品を見る";
   link.href = work.url;
   link.target = "_blank";
   link.setAttribute("rel", "noopener noreferrer");
-
-  detail.innerHTML = "";
-  detail.appendChild(workElement);
-  detail.appendChild(link);
   link.classList.toggle("work-link");
+  return link;
+}
+// 作品の表示状態を管理する処理関数
+function toggleWorkInfo(work, detail) {
   if (currentWork === work) {
     currentWork = null
     detail.classList.remove("show-detail");
@@ -215,8 +208,20 @@ function showWorkInfo(work) {
     currentWork = work
   }
 }
+// 作品情報を画面に表示する関数
+let currentWork = null;
+function showWorkInfo(work) {
+  const detail = document.querySelector("#work-detail");
+  const workElement = document.createElement("div");
+  const link = createWorkLink(work);
+  workElement.textContent = getWorkInfo(work);
+  detail.innerHTML = "";
+  detail.appendChild(workElement);
+  detail.appendChild(link);
+  toggleWorkInfo(work, detail);
+}
 
-// ④ 作品一覧を作る
+// 作品一覧を作る
 for (let i = 0; i < works.length; i++) {
   const project = document.querySelector(`#works-project${i + 1}`);
 
