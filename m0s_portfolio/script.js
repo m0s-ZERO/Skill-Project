@@ -158,7 +158,7 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20,Day21,Day22,Day23.Day24.Day25,Day26,Day27
+// Day20,Day21,Day22,Day23.Day24.Day25,Day26,Day27,Day28
 // ① 作品データ
 const works = [
   {
@@ -237,16 +237,14 @@ function createWorkElement(work, index) {
   project.appendChild(workCategory);
   project.appendChild(workDescription);
 
-  workTitle.classList.toggle("work-title");
-  workCategory.classList.toggle("work-category");
+  workTitle.classList.add("work-title");
+  workCategory.classList.add("work-category");
 
   return project;
 }
 
 // クリックされたときの処理の関数
-function handleWorkClick(work, e) {
-  console.log("クリックされた要素：" + e.target.textContent);
-  console.log(work.url);
+function handleWorkClick(work) {
   showWorkInfo(work);
 }
 
@@ -254,7 +252,7 @@ function handleWorkClick(work, e) {
 for (let i = 0; i < works.length; i++) {
   const project = createWorkElement(works[i], i);
   // 作品をクリックしたら詳細を表示
-  project.addEventListener("click", function (e) {
-    handleWorkClick(works[i], e)
+  project.addEventListener("click", function () {
+    handleWorkClick(works[i])
   });
 }
