@@ -158,7 +158,7 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20,Day21,Day22,Day23.Day24.Day25,Day26,Day27,Day28
+// Day20,Day21,Day22,Day23.Day24.Day25,Day26,Day27,Day28,Day29
 // ① 作品データ
 const works = [
   {
@@ -181,6 +181,8 @@ const works = [
   }
 ];
 
+let currentWork = null;
+
 // 作品情報を作る関数
 function getWorkInfo(work) {
   return "クリックしたプロジェクト"
@@ -195,7 +197,7 @@ function createWorkLink(work) {
   link.href = work.url;
   link.target = "_blank";
   link.setAttribute("rel", "noopener noreferrer");
-  link.classList.toggle("work-link");
+  link.classList.add("work-link");
   return link;
 }
 // 作品の表示状態を管理する処理関数
@@ -209,7 +211,6 @@ function toggleWorkInfo(work, detail) {
   }
 }
 // 作品情報を画面に表示する関数
-let currentWork = null;
 function showWorkInfo(work) {
   const detail = document.querySelector("#work-detail");
   const workElement = document.createElement("div");
@@ -255,4 +256,19 @@ for (let i = 0; i < works.length; i++) {
   project.addEventListener("click", function () {
     handleWorkClick(works[i])
   });
+
+  // Day29
+  // イベントお試し
+  project.addEventListener("mouseenter", function () {
+    project.classList.add("hover");
+  });
+  project.addEventListener("mouseleave", function () {
+  project.classList.remove("hover");
+});
 }
+
+
+// const testInput = document.querySelector("#nameInput");
+// testInput.addEventListener("input", function () {
+//   console.log(testInput.value);
+// });
