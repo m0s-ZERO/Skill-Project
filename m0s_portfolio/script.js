@@ -158,7 +158,7 @@ showButton.addEventListener("click", function () {
 // showWorkInfo()→作品情報を画面に表示 ← Day20で整理する
 // -------------------------------------------
 
-// Day20,Day21,Day22,Day23.Day24.Day25,Day26,Day27,Day28,Day29
+// Day20,Day21,Day22,Day23.Day24.Day25,Day26,Day27,Day28,Day29,Day30
 // ① 作品データ
 const works = [
   {
@@ -263,8 +263,8 @@ for (let i = 0; i < works.length; i++) {
     project.classList.add("hover");
   });
   project.addEventListener("mouseleave", function () {
-  project.classList.remove("hover");
-});
+    project.classList.remove("hover");
+  });
 }
 
 
@@ -272,3 +272,33 @@ for (let i = 0; i < works.length; i++) {
 // testInput.addEventListener("input", function () {
 //   console.log(testInput.value);
 // });
+
+// Day30
+const inputResult = document.querySelector("#input-result");
+const testInput = document.querySelector("#nameInput");
+const inputCount = document.querySelector("#input-count");
+const inputLength = document.querySelector("#input-length");
+testInput.addEventListener("input", function () {
+  if (testInput.value === "") {
+    // 空欄の場合
+    inputResult.textContent = "名前を入力してください"
+    inputCount.textContent = "";
+  } else {
+    // 入力されている場合
+    inputResult.textContent = testInput.value + "さん!こんにちは！";
+    inputCount.textContent = "現在の文字数：" + testInput.value.length + "文字";
+  }
+
+  if (testInput.value.length === 0) {
+    // 条件1
+    inputLength.textContent = "名前を入力してください"
+    inputLength.textContent = "";
+  } else if (testInput.value.length <= 5) {
+    // 条件2
+    inputLength.textContent = "短い名前ですね！"
+  } else {
+    // それ以外
+    inputLength.textContent = "長めの名前ですね！"
+  }
+
+});
