@@ -18,9 +18,10 @@ const projects = [
 
 const projectList = document.querySelector("#project-list");
 
-function renderProjects() {
+// 再描画関数
+function renderProjects(projectListData) {
   projectList.textContent = "";
-  for (let i = 0; i < projects.length; i++) {
+  for (let i = 0; i < projectListData.length; i++) {
     const project = document.createElement("div");
 
     const projectTitle = document.createElement("div");
@@ -30,9 +31,9 @@ function renderProjects() {
     const deleteButton = document.createElement("button");
     const editButton = document.createElement("button");
 
-    projectTitle.textContent = projects[i].title;
-    projectCategory.textContent = projects[i].category;
-    projectDescription.textContent = projects[i].description;
+    projectTitle.textContent = projectListData[i].title;
+    projectCategory.textContent = projectListData[i].category;
+    projectDescription.textContent = projectListData[i].description;
 
     deleteButton.textContent = "削除";
     editButton.textContent = "編集";
@@ -51,9 +52,9 @@ function renderProjects() {
       const detail = document.querySelector("#project-detail");
       const projectElement = document.createElement("div");
       projectElement.textContent = "クリックしたプロジェクト"
-        + "\nタイトル：" + projects[i].title
-        + " \nカテゴリー：" + projects[i].category
-        + "\n説明：" + projects[i].description;
+        + "\nタイトル：" + projectListData[i].title
+        + " \nカテゴリー：" + projectListData[i].category
+        + "\n説明：" + projectListData[i].description;
       detail.innerHTML = "";
       detail.appendChild(projectElement);
     });
@@ -71,9 +72,9 @@ function renderProjects() {
     editButton.addEventListener("click", function (e) {
       e.stopPropagation();
       editingIndex = i;
-      projectTitleInput.value = projects[i].title;
-      projectCategoryInput.value = projects[i].category;
-      projectDescriptionInput.value = projects[i].description;
+      projectTitleInput.value = projectListData[i].title;
+      projectCategoryInput.value = projectListData[i].category;
+      projectDescriptionInput.value = projectListData[i].description;
     });
 
     // 編集したプロジェクトを保存するための定義
@@ -93,7 +94,7 @@ function renderProjects() {
 
   }
 }
-renderProjects();
+renderProjects(projects);
 
 
 // 新しい作品を追加するための定義
@@ -122,4 +123,21 @@ addProject.addEventListener("click", function () {
     projectCategoryInput.value = "";
     projectDescriptionInput.value = "";
   }
+});
+
+// 検索機能
+const searchInput = document.querySelector("#search-input");
+const searchButton = document.querySelector("#search-button");
+searchButton.addEventListener("click", function () {
+  const keyword = searchInput.value;
+  const searchResult = document.querySelector("#search-result");
+  searchResult.textContent = "";
+  const filteredProjects = projects.filter(function (project) {
+    return project.title.toLowerCase().includes(keyword.toLowerCase()) || project.category.toLowerCase().includes(keyword.toLowerCase());
+  });
+
+  if (filteredProjects.length === 0) {
+    searchResult.textContent = "該当するプロジェクトがありません";
+  }
+  renderProjects(filteredProjects);
 });
