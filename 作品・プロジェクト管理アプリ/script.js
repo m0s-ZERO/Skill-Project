@@ -15,7 +15,7 @@ const projects = [
     description: "親友3人組の服作成"
   }
 ];
-
+const originalProjects = [...projects];
 const projectList = document.querySelector("#project-list");
 
 // 再描画関数
@@ -129,15 +129,56 @@ addProject.addEventListener("click", function () {
 const searchInput = document.querySelector("#search-input");
 const searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", function () {
+  filterProjects();
+});
+
+// カテゴリー絞り込み機能
+const categoryFilter = document.querySelector("#category-filter");
+let filteredCategory;
+categoryFilter.addEventListener("change", function () {
+  filterProjects();
+});
+
+// 「検索」+「カテゴリー絞り込み」機能
+function filterProjects() {
+  // ① keywordを取得
   const keyword = searchInput.value;
+  // ② projectsをfilter
+  const filteredProjects = projects.filter(function (project) {
+    return (
+      project.title.toLowerCase().includes(keyword.toLowerCase()) ||
+      project.category.toLowerCase().includes(keyword.toLowerCase())
+    )
+      &&
+      (
+        categoryFilter.value === "all" ||
+        project.category.includes(categoryFilter.value)
+      );
+  });
+  // ③ 条件
+  // ④ 0件チェック
   const searchResult = document.querySelector("#search-result");
   searchResult.textContent = "";
-  const filteredProjects = projects.filter(function (project) {
-    return project.title.toLowerCase().includes(keyword.toLowerCase()) || project.category.toLowerCase().includes(keyword.toLowerCase());
-  });
-
   if (filteredProjects.length === 0) {
     searchResult.textContent = "該当するプロジェクトがありません";
   }
+  // ⑤ render
   renderProjects(filteredProjects);
+}
+
+// ソート
+const sortFilter = document.querySelector("#sort-filter");
+sortFilter.addEventListener("change", function () {
+  if (sortFilter.value === "asc") {
+    projects.sort(function (a, b) {
+      return a.title.localeCompare(b.title);
+    });
+  } else if (sortFilter.value === "desc") {
+    projects.sort(function (a, b) {
+      return b.title.localeCompare(a.title);
+    });
+  } else if (sortFilter.value === "reset") {
+    projects.splice(0, projects.length, ...originalProjects);
+  }
+  renderProjects(projects);
 });
