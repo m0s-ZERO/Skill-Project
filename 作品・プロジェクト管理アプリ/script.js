@@ -1,4 +1,4 @@
-const projects = [
+let projects = [
   {
     title: "Skill Project",
     category: "Web",
@@ -15,6 +15,13 @@ const projects = [
     description: "親友3人組の服作成"
   }
 ];
+// リロード復元
+const savedProjects = localStorage.getItem("projects");
+console.log(savedProjects);
+if (savedProjects !== null) {
+  projects = JSON.parse(savedProjects);
+}
+
 const originalProjects = [...projects];
 const projectList = document.querySelector("#project-list");
 // 現在表示されているプロジェクトを保持するための変数
@@ -69,6 +76,7 @@ function renderProjects(projectListData) {
       const targetProject = currentProjects[i];
       const originalIndex = projects.indexOf(targetProject);
       projects.splice(originalIndex, 1);
+      saveProjects();
       filterProjects();
     });
 
@@ -87,6 +95,11 @@ function renderProjects(projectListData) {
 }
 renderProjects(projects);
 
+// リロードしてもデータを保存する処理
+function saveProjects() {
+  localStorage.setItem("projects", JSON.stringify(projects));
+}
+
 // 編集したプロジェクトを保存するための定義
 const saveProject = document.querySelector("#save-project");
 // 「保存」をクリックしたときの処理
@@ -98,6 +111,7 @@ saveProject.addEventListener("click", function (e) {
   projects[editingIndex].title = projectTitleInput.value;
   projects[editingIndex].category = projectCategoryInput.value;
   projects[editingIndex].description = projectDescriptionInput.value;
+  saveProjects();
   filterProjects();
   editingIndex = null;
 });
@@ -123,6 +137,7 @@ addProject.addEventListener("click", function () {
       category: projectCategoryInput.value,
       description: projectDescriptionInput.value
     });
+    saveProjects();
     filterProjects();
     projectTitleInput.value = "";
     projectCategoryInput.value = "";
