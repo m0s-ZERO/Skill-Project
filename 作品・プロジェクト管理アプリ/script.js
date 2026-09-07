@@ -35,25 +35,28 @@ function renderProjects(projectListData) {
   for (let i = 0; i < projectListData.length; i++) {
     const project = document.createElement("div");
 
-    const projectTitle = document.createElement("div");
+    const projectTitle = document.createElement("h3");
     const projectCategory = document.createElement("div");
-    const projectDescription = document.createElement("div");
+    const projectDescription = document.createElement("p");
 
     const deleteButton = document.createElement("button");
     const editButton = document.createElement("button");
+    const buttonArea = document.createElement("div");
 
     projectTitle.textContent = projectListData[i].title;
     projectCategory.textContent = projectListData[i].category;
     projectDescription.textContent = projectListData[i].description;
 
-    deleteButton.textContent = "削除";
     editButton.textContent = "編集";
+    deleteButton.textContent = "削除";
 
     project.appendChild(projectTitle);
     project.appendChild(projectCategory);
     project.appendChild(projectDescription);
-    project.appendChild(deleteButton);
-    project.appendChild(editButton);
+
+    buttonArea.appendChild(editButton);
+    buttonArea.appendChild(deleteButton);
+    project.appendChild(buttonArea);
 
     projectList.appendChild(project);
 
@@ -72,12 +75,19 @@ function renderProjects(projectListData) {
 
     // 「削除」をクリックしたときの処理
     deleteButton.addEventListener("click", function (e) {
+      // 削除確認処理
+      const result = confirm("本当に削除しますか？");
+      if (result === false) {
+        return;
+      }
       e.stopPropagation();
       const targetProject = currentProjects[i];
       const originalIndex = projects.indexOf(targetProject);
       projects.splice(originalIndex, 1);
       saveProjects();
       filterProjects();
+      const actionMessage = document.querySelector("#action-message");
+      actionMessage.textContent = "プロジェクトを削除しました";
     });
 
     // 「編集」をクリックしたときの処理
@@ -89,7 +99,11 @@ function renderProjects(projectListData) {
       projectTitleInput.value = targetProject.title;
       projectCategoryInput.value = targetProject.category;
       projectDescriptionInput.value = targetProject.description;
+
+      const formMode = document.querySelector("#form-mode");
+      formMode.textContent = "プロジェクトを編集";
     });
+
 
   }
 }
@@ -113,7 +127,15 @@ saveProject.addEventListener("click", function (e) {
   projects[editingIndex].description = projectDescriptionInput.value;
   saveProjects();
   filterProjects();
+  const actionMessage = document.querySelector("#action-message");
+  actionMessage.textContent = "プロジェクトを更新しました";
   editingIndex = null;
+
+  const formMode = document.querySelector("#form-mode");
+  formMode.textContent = "プロジェクトを追加";
+  projectTitleInput.value = "";
+  projectCategoryInput.value = "";
+  projectDescriptionInput.value = "";
 });
 
 // 新しい作品を追加するための定義
@@ -139,6 +161,10 @@ addProject.addEventListener("click", function () {
     });
     saveProjects();
     filterProjects();
+
+    const actionMessage = document.querySelector("#action-message");
+    actionMessage.textContent = "プロジェクトを追加しました";
+
     projectTitleInput.value = "";
     projectCategoryInput.value = "";
     projectDescriptionInput.value = "";
@@ -187,7 +213,9 @@ function filterProjects() {
   // ③ 0件チェック
   const searchResult = document.querySelector("#search-result");
   searchResult.textContent = "";
-  if (currentProjects.length === 0) {
+  if (projects.length === 0) {
+    searchResult.textContent = "プロジェクトがありません";
+  } else if (currentProjects.length === 0) {
     searchResult.textContent = "該当するプロジェクトがありません";
   }
   // ④ render

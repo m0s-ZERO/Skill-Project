@@ -10,10 +10,16 @@
 
 <body>
   <h1>Project Manager</h1>
+<h2 id="action-message"></h2>
+  <div id="form-mode">プロジェクトを追加</div>
 
-  <input id="project-title" placeholder="作品名">
-  <input id="project-category" placeholder="カテゴリー">
-  <input id="project-description" placeholder="説明">
+  <label for="project-title">作品名</label>
+  <input id="project-title" placeholder="例：Skill Project">
+  <label for="project-category">カテゴリー</label>
+  <input id="project-category" placeholder="例：Web">
+  <label for="project-description">説明</label>
+  <textarea id="project-description" placeholder="例：ポートフォリオ制作"></textarea>
+
   <button id="add-project">追加</button>
   <button id="save-project">保存</button>
   <div id="blank-check"></div>
