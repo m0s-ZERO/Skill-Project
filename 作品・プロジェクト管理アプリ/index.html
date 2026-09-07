@@ -10,7 +10,7 @@
 
 <body>
   <h1>Project Manager</h1>
-<h2 id="action-message"></h2>
+  <h2 id="action-message"></h2>
   <div id="form-mode">プロジェクトを追加</div>
 
   <label for="project-title">作品名</label>
@@ -42,8 +42,16 @@
 
   <div id="search-result"></div>
 
-  <div id="project-list"></div>
-  <div id="project-detail"></div>
+  <div class="project-area">
+    <div>
+      <h2>プロジェクト一覧</h2>
+      <div id="project-list"></div>
+    </div>
+    <div>
+      <h2>プロジェクト詳細</h2>
+      <div id="project-detail"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

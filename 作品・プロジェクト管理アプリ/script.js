@@ -63,14 +63,38 @@ function renderProjects(projectListData) {
     project.classList.add("project");
 
     project.addEventListener("click", function () {
+      // 選択したプロジェクトを分かるようにする
+      const selectedProjects = document.querySelectorAll(".project.selected");
+      for (let j = 0; j < selectedProjects.length; j++) {
+        selectedProjects[j].classList.remove("selected");
+      }
+      project.classList.add("selected");
+
       const detail = document.querySelector("#project-detail");
       const projectElement = document.createElement("div");
-      projectElement.textContent = "クリックしたプロジェクト"
-        + "\nタイトル：" + projectListData[i].title
-        + " \nカテゴリー：" + projectListData[i].category
-        + "\n説明：" + projectListData[i].description;
+
+      const detailTitle = document.createElement("h3");
+      const detailCategory = document.createElement("p");
+      const detailDescription = document.createElement("p");
+
+      detailTitle.textContent = projectListData[i].title;
+      detailCategory.textContent = "カテゴリー：" + projectListData[i].category;
+      detailDescription.textContent = "説明：" + projectListData[i].description;
+
+      projectElement.appendChild(detailTitle);
+      projectElement.appendChild(detailCategory);
+      projectElement.appendChild(detailDescription);
+
       detail.innerHTML = "";
       detail.appendChild(projectElement);
+
+      // クリック詳細を閉じるボタン
+      const closeButton = document.createElement("button");
+      closeButton.textContent = "閉じる";
+      closeButton.addEventListener("click", function () {
+        detail.innerHTML = "";
+      });
+      projectElement.appendChild(closeButton);
     });
 
     // 「削除」をクリックしたときの処理
