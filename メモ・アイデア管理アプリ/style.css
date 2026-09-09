@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* ヘッダー */
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: #443020;
+  color: white;
+}
+
+header h1 {
+  margin: 0 0 10px;
+}
+
+header p {
+  margin: 0;
+}
+
+/* メイン */
+main {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+/* 各セクション */
+section {
+  background: white;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+/* 入力フォーム */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ボタン */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#add-button {
+  width: 100%;
+  background: #775030;
+  color: white;
+}
+
+#add-button:hover {
+  opacity: 0.8;
+}
+
+/* 一覧 */
+#ideas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 詳細 */
+#idea-detail {
+  display: none;
+}

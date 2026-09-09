@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idea Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Idea Vault</h1>
+    <p>思考を記録して、整理する場所</p>
+  </header>
+
+  <main>
+    <!-- 入力エリア -->
+    <section id="idea-form">
+      <h2>新しく記録する</h2>
+      <input type="text" id="title" placeholder="タイトル">
+      <textarea id="content" placeholder="内容"></textarea>
+      <select id="category">
+        <option value="アイデア">アイデア</option>
+        <option value="メモ">メモ</option>
+        <option value="将来">将来</option>
+        <option value="目標">目標</option>
+        <option value="Todo">Todo</option>
+        <option value="その他">その他</option>
+      </select>
+      <button id="add-button">追加する</button>
+    </section>
+
+
+    <!-- カテゴリーフィルター -->
+    <section id="filter-area">
+      <h2>カテゴリー</h2>
+      <select id="category-filter">
+        <option value="すべて">すべて</option>
+        <option value="アイデア">アイデア</option>
+        <option value="メモ">メモ</option>
+        <option value="将来">将来</option>
+        <option value="目標">目標</option>
+        <option value="Todo">Todo</option>
+        <option value="その他">その他</option>
+      </select>
+    </section>
+
+    <!-- 一覧エリア -->
+    <section id="idea-list">
+      <h2>記録一覧</h2>
+      <div id="ideas"></div>
+    </section>
+
+    <!-- 詳細エリア -->
+    <section id="idea-detail">
+      <h2 id="detail-title"></h2>
+      <p id="detail-category"></p>
+      <p id="detail-content"></p>
+      <button id="close-detail">閉じる</button>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
