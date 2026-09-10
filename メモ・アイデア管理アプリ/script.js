@@ -28,13 +28,31 @@ function displayIdeas() {
   const filteredIdeas = ideas.filter((idea) => {
     return selectedCategory === "すべて" || idea.category === selectedCategory;
   });
+  if (filteredIdeas.length === 0) {
+    ideasContainer.innerHTML = "<p>アイデアがありません</p>";
+    return;
+  }
   filteredIdeas.forEach((idea) => {
     const ideaCard = document.createElement("div");
     ideaCard.innerHTML = `
       <h2>${idea.title}</h2>
       <p>カテゴリー：${idea.category}</p>
       <h3>${idea.content}</h3>
-    `;
+      `;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "削除";
+    // 削除ボタンイベント
+    deleteButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      ideas = ideas.filter((item) => {
+        return item !== idea;
+      });
+      localStorage.setItem("ideas", JSON.stringify(ideas));
+      displayIdeas();
+    });
+
+
     ideaCard.addEventListener("click", () => {
       detailTitle.textContent = idea.title;
       detailCategory.textContent = `カテゴリー：${idea.category}`;
@@ -42,6 +60,7 @@ function displayIdeas() {
 
       detailArea.style.display = "block";
     });
+    ideaCard.appendChild(deleteButton);
     ideasContainer.appendChild(ideaCard);
   });
 }
@@ -59,7 +78,11 @@ addButton.addEventListener("click", () => {
     category: categoryInput.value
   };
   ideas.push(newIdea);
+  localStorage.setItem("ideas", JSON.stringify(ideas));
   displayIdeas(); // 追加後にアイデアを再表示
+
+  titleInput.value = "";
+  contentInput.value = "";
 });
 
 // フィルター変更イベント
@@ -72,3 +95,10 @@ closeDetail.addEventListener("click", () => {
   detailArea.style.display = "none";
 });
 // ▫初期表示
+
+
+const savedIdeas = localStorage.getItem("ideas");
+if (savedIdeas) {
+  ideas = JSON.parse(savedIdeas);
+}
+displayIdeas();
