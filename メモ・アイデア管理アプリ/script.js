@@ -7,7 +7,7 @@ const contentInput = document.querySelector("#content");
 const categoryInput = document.querySelector("#category");
 
 const addButton = document.querySelector("#add-button");
-
+const cancelEditButton = document.querySelector("#cancel-edit");
 const ideasContainer = document.querySelector("#ideas");
 
 const categoryFilter = document.querySelector("#category-filter");
@@ -19,6 +19,7 @@ const detailContent = document.querySelector("#detail-content");
 const closeDetail = document.querySelector("#close-detail");
 
 // ▫状態
+let editingIdea = null;
 
 // ▫関数
 // 追加したアイデアを画面に表示する関数
@@ -40,6 +41,19 @@ function displayIdeas() {
       <h3>${idea.content}</h3>
       `;
 
+
+    const editButton = document.createElement("button");
+    editButton.textContent = "編集";
+    // 編集ボタンイベント
+    editButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      editingIdea = idea;
+      titleInput.value = idea.title;
+      contentInput.value = idea.content;
+      categoryInput.value = idea.category;
+      addButton.textContent = "更新する";
+    });
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
     // 削除ボタンイベント
@@ -60,6 +74,7 @@ function displayIdeas() {
 
       detailArea.style.display = "block";
     });
+    ideaCard.appendChild(editButton);
     ideaCard.appendChild(deleteButton);
     ideasContainer.appendChild(ideaCard);
   });
@@ -72,17 +87,33 @@ addButton.addEventListener("click", () => {
     alert("タイトルと内容を入力してください");
     return;
   }
-  const newIdea = {
-    title: titleInput.value,
-    content: contentInput.value,
-    category: categoryInput.value
-  };
-  ideas.push(newIdea);
+  if (editingIdea) {
+    editingIdea.title = titleInput.value;
+    editingIdea.content = contentInput.value;
+    editingIdea.category = categoryInput.value;
+  } else {
+    const newIdea = {
+      title: titleInput.value,
+      content: contentInput.value,
+      category: categoryInput.value
+    };
+    ideas.push(newIdea);
+  }
   localStorage.setItem("ideas", JSON.stringify(ideas));
-  displayIdeas(); // 追加後にアイデアを再表示
-
+  displayIdeas();
   titleInput.value = "";
   contentInput.value = "";
+  addButton.textContent = "追加する";
+  editingIdea = null;
+});
+
+// キャンセルイベント
+cancelEditButton.addEventListener("click", () => {
+  editingIdea = null;
+  titleInput.value = "";
+  contentInput.value = "";
+  categoryInput.value = "アイデア";
+  addButton.textContent = "追加する";
 });
 
 // フィルター変更イベント
