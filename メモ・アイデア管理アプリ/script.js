@@ -10,6 +10,7 @@ const addButton = document.querySelector("#add-button");
 const cancelEditButton = document.querySelector("#cancel-edit");
 const ideasContainer = document.querySelector("#ideas");
 
+const searchInput = document.querySelector("#search-input");
 const categoryFilter = document.querySelector("#category-filter");
 
 const detailArea = document.querySelector("#idea-detail");
@@ -25,14 +26,29 @@ let editingIdea = null;
 // 追加したアイデアを画面に表示する関数
 function displayIdeas() {
   ideasContainer.innerHTML = "";
+  // 条件を取得
   const selectedCategory = categoryFilter.value;
+  const keyword = searchInput.value.trim();
+  // Ideaをfilter()
   const filteredIdeas = ideas.filter((idea) => {
-    return selectedCategory === "すべて" || idea.category === selectedCategory;
+    const matchesCategory =
+      selectedCategory === "すべて" ||
+      idea.category === selectedCategory;
+    const matchesKeyword =
+      idea.title.toLowerCase().includes(keyword.toLowerCase()) ||
+      idea.content.toLowerCase().includes(keyword.toLowerCase());
+    return matchesCategory && matchesKeyword;
   });
+  // 0件ならメッセージ
   if (filteredIdeas.length === 0) {
-    ideasContainer.innerHTML = "<p>アイデアがありません</p>";
+    if (keyword !== "") {
+      ideasContainer.innerHTML = "<p>該当するアイデアがありません</p>";
+    } else {
+      ideasContainer.innerHTML = "<p>アイデアがありません</p>";
+    }
     return;
   }
+  // Ideaをカードとして作る
   filteredIdeas.forEach((idea) => {
     const ideaCard = document.createElement("div");
     ideaCard.innerHTML = `
@@ -40,8 +56,6 @@ function displayIdeas() {
       <p>カテゴリー：${idea.category}</p>
       <h3>${idea.content}</h3>
       `;
-
-
     const editButton = document.createElement("button");
     editButton.textContent = "編集";
     // 編集ボタンイベント
@@ -53,7 +67,6 @@ function displayIdeas() {
       categoryInput.value = idea.category;
       addButton.textContent = "更新する";
     });
-
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
     // 削除ボタンイベント
@@ -62,18 +75,18 @@ function displayIdeas() {
       ideas = ideas.filter((item) => {
         return item !== idea;
       });
+      editingIdea = null;
       localStorage.setItem("ideas", JSON.stringify(ideas));
       displayIdeas();
     });
-
-
+    // 詳細表示イベント
     ideaCard.addEventListener("click", () => {
       detailTitle.textContent = idea.title;
       detailCategory.textContent = `カテゴリー：${idea.category}`;
       detailContent.textContent = idea.content;
-
       detailArea.style.display = "block";
     });
+    // 画面に表示
     ideaCard.appendChild(editButton);
     ideaCard.appendChild(deleteButton);
     ideasContainer.appendChild(ideaCard);
@@ -114,6 +127,11 @@ cancelEditButton.addEventListener("click", () => {
   contentInput.value = "";
   categoryInput.value = "アイデア";
   addButton.textContent = "追加する";
+});
+
+// 検索イベント
+searchInput.addEventListener("input", () => {
+  displayIdeas();
 });
 
 // フィルター変更イベント
