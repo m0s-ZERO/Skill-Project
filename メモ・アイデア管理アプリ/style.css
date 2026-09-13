@@ -62,6 +62,27 @@ textarea {
   resize: vertical;
 }
 
+/* プレースホルダー */
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+}
+
+/* 入力フォーム */
+#idea-form input,
+#idea-form textarea,
+#idea-form select {
+  display: block;
+}
+
+#idea-form input:focus,
+#idea-form textarea:focus,
+#idea-form select:focus {
+  outline: none;
+  border-color: #775030;
+  box-shadow: 0 0 0 2px rgba(119, 80, 48, 0.1);
+}
+
 /* ボタン */
 button {
   padding: 10px 18px;
@@ -73,12 +94,58 @@ button {
 
 #add-button {
   width: 100%;
+  padding: 14px;
   background: #775030;
   color: white;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-#add-button:hover {
+/* ホバーアクション */
+#add-button:hover,
+#clear-button:hover,
+#cancel-edit:hover,
+#close-detail:hover,
+.idea-card button:hover {
   opacity: 0.8;
+}
+
+/* クリアボタン */
+#clear-button {
+  background: #ddd;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* キャンセルボタン */
+#cancel-edit {
+  background: #aaa;
+  color: white;
+  margin-top: 10px;
+}
+
+/* 検索・フィルター */
+.filter-section {
+  background: #fafafa;
+}
+
+.filter-section h2 {
+  margin-bottom: 20px;
+}
+
+.filter-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.filter-section input,
+.filter-section select {
+  margin-bottom: 15px;
+}
+
+#search-input {
+  background: white;
 }
 
 /* 一覧 */
@@ -91,4 +158,176 @@ button {
 /* 詳細 */
 #idea-detail {
   display: none;
+  border: 1px solid #ddd;
+  background: #fafafa;
+}
+
+#detail-title {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+#detail-category {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 0 10px;
+  border-radius: 20px;
+  background: #eee;
+  font-size: 13px;
+  color: #555;
+}
+
+#detail-content {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* 閉じるボタン */
+#close-detail {
+  background: #ddd;
+  color: #333;
+}
+
+/* Ideaカード */
+.idea-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.idea-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.idea-card h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.idea-card h3 {
+  margin: 15px 0;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: normal;
+}
+
+/* カード内のボタン */
+.button-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Todo完了チェック */
+.button-area label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+}
+
+.button-area input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #bbb;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* チェックしたとき */
+.button-area input[type="checkbox"]:checked {
+  background: #775030;
+  border-color: #775030;
+}
+
+/* チェックマーク */
+.button-area input[type="checkbox"]:checked::after {
+  content: "✓";
+  display: block;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 16px;
+}
+
+.button-area button {
+  margin: 0;
+}
+
+.button-group {
+  display: flex;
+  gap: 6px;
+}
+
+.button-group button {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.card-header .button-group {
+  margin-left: auto;
+}
+
+/* カテゴリータグ */
+.category-tag {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 20px;
+  background: #eee;
+  font-size: 12px;
+  color: #555;
+}
+
+.idea-content {
+  white-space: pre-wrap;
+
+  /* 編集ボタン */
+  .idea-card button:first-child {
+    background: #eee;
+    color: #333;
+  }
+
+  /* 削除ボタン */
+  .idea-card button:last-child {
+    background: #ddd;
+    color: #333;
+  }
+}
+
+/* 元に戻すボタン */
+.restore-button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* 完了したタスク */
+#completed-ideas .idea-card {
+  opacity: 0.7;
+}
+
+#completed-ideas .idea-card h2 {
+  text-decoration: line-through;
 }

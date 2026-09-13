@@ -29,12 +29,13 @@
         <option value="その他">その他</option>
       </select>
       <button id="add-button">追加する</button>
+      <button id="clear-button">クリア</button>
       <button id="cancel-edit">キャンセル</button>
     </section>
 
 
     <!-- カテゴリーフィルター -->
-    <section id="filter-area">
+    <section id="filter-area" class="filter-section">
       <label for="search-input">キーワード検索</label>
       <input type="text" id="search-input" placeholder="タイトルや内容を検索">
       <h2>カテゴリー</h2>
@@ -53,6 +54,12 @@
     <section id="idea-list">
       <h2>記録一覧</h2>
       <div id="ideas"></div>
+    </section>
+
+    <!-- Todo機能 -->
+    <section id="completed-tasks">
+      <h2>完了したタスク</h2>
+      <div id="completed-ideas"></div>
     </section>
 
     <!-- 詳細エリア -->
