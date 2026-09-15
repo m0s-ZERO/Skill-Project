@@ -91,6 +91,14 @@ body {
   font-weight: bold;
   margin: 8px 0 10px;
   color: #222;
+  white-space: nowrap;
+}
+
+.temperature-range {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  white-space: nowrap;
 }
 
 #wind-speed {
@@ -98,4 +106,15 @@ body {
   margin-top: 4px;
   margin-bottom: 0;
   color: #666;
+}
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+  #temperature {
+    font-size: 32px;
+  }
+
+  .temperature-range {
+    gap: 10px;
+  }
 }
