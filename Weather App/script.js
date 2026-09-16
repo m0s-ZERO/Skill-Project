@@ -6,6 +6,8 @@ const searchButton = document.querySelector("#search-button");
 
 const status = document.querySelector("#status");
 
+const weatherCard = document.querySelector(".weather-card");
+
 const cityName = document.querySelector("#city-name");
 const date = document.querySelector("#date");
 const currentWeather = document.querySelector("#current-weather");
@@ -14,6 +16,8 @@ const temperature = document.querySelector("#temperature");
 const maxTemperature = document.querySelector("#max-temperature");
 const minTemperature = document.querySelector("#min-temperature");
 const windSpeed = document.querySelector("#wind-speed");
+
+const forecast = document.querySelector("#forecast");
 
 // ▫状態
 // ▫状態
@@ -29,13 +33,14 @@ const cityMap = {
 // APIから天気データを取得する関数
 async function getWeather(latitude, longitude) {
   const response = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min&temperature_unit=celsius&wind_speed_unit=kmh&timezone=Asia%2FTokyo`
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&temperature_unit=celsius&wind_speed_unit=kmh&timezone=Asia%2FTokyo`
   );
   if (!response.ok) {
     throw new Error("Weather API error");
   }
   const data = await response.json();
   displayWeather(data);
+  displayForecast(data);
   status.textContent = "";
   searchButton.disabled = false;
 }
@@ -46,6 +51,9 @@ async function searchCity() {
     return;
   }
   const city = cityInput.value.trim();
+
+  weatherCard.style.display = "none";
+  
   cityName.textContent = "";
   currentWeather.textContent = "";
   date.textContent = "";
@@ -53,6 +61,7 @@ async function searchCity() {
   maxTemperature.textContent = "";
   minTemperature.textContent = "";
   windSpeed.textContent = "";
+  forecast.innerHTML = "";
   if (!city) {
     status.textContent = "都市名を入力してください";
     return;
@@ -88,6 +97,7 @@ async function searchCity() {
     console.log(longitude);
 
     cityName.textContent = `${locationName}の天気`;
+    weatherCard.style.display = "block";
     await getWeather(latitude, longitude);
   } catch (error) {
     console.error(error);
@@ -162,6 +172,29 @@ function displayWeather(data) {
   windSpeed.textContent =
     `風速：${data.current.wind_speed_10m} km/h`;
   date.textContent = formattedDate;
+}
+
+// 複数日の予報を表示する関数
+function displayForecast(data) {
+  forecast.innerHTML = "";
+  for (let i = 0; i < 3; i++) {
+    const forecastCard = document.createElement("div");
+    forecastCard.className = "forecast-card";
+    const forecastDate = new Date(data.daily.time[i]);
+    const weatherCode = data.daily.weather_code[i];
+    const weatherText = getWeatherText(weatherCode);
+    const formattedDate =
+      `${forecastDate.getMonth() + 1}月${forecastDate.getDate()}日`;
+    const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+    const weekday = weekdays[forecastDate.getDay()];
+    forecastCard.innerHTML = `
+  <p>${formattedDate}（${weekday}）</p>
+  <p class="forecast-weather">${weatherText}</p>
+  <p>最高：${data.daily.temperature_2m_max[i]} ℃</p>
+  <p>最低：${data.daily.temperature_2m_min[i]} ℃</p>
+`;
+    forecast.appendChild(forecastCard);
+  }
 }
 
 // ▫イベント

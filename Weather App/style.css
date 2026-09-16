@@ -68,6 +68,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: white;
   text-align: center;
+  display: none;
 }
 
 
@@ -108,6 +109,39 @@ body {
   color: #666;
 }
 
+/* 複数日 */
+#forecast {
+  width: 320px;
+  max-width: 100%;
+  margin: 20px auto;
+    display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+.forecast-card {
+  width: 180px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.forecast-card p {
+  margin: 8px 0;
+}
+
+.forecast-weather {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 /* レスポンシブ */
 @media (max-width: 480px) {
   #temperature {
@@ -116,5 +150,16 @@ body {
 
   .temperature-range {
     gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  #forecast {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forecast-card {
+    width: 320px;
+    max-width: 100%;
   }
 }
