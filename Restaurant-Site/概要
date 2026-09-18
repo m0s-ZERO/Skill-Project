@@ -1,0 +1,59 @@
+#タイトル
+Luna Table｜自家製パスタと季節のイタリアン
+
+##構造[HTML]
+header/site-header
+  h1 [Logo]
+  nav/site-nav [Navigation]
+    ul
+      li*5>a #About,#Menu,#Gallery,#Access,#Reservation
+
+main
+  section/hero
+    div/hero-content
+      p/hero-label [Label]
+      h2 [Title]
+      p/hero-description [Description]
+      a#reservation/button [Button]
+  section/section/#about
+    div/section-inner
+      h2/section-title [Title]
+      h3 [Heading]
+      p [Text]
+      p [Text]
+  section/section/#menu
+    div/section-inner
+      h2/section-title [Title]
+      div/menu-list
+        article*3/menu-item [MenuItem]
+          h3
+          p
+          p
+  section/section/#gallery
+    div/section-inner
+      h2/section-title [Title]
+      div/gallery
+        div/gallery-item*6 料理写真,店内写真,料理写真,店内写真,料理写真,店内写真 [GalleryItem]
+  section/section/#access
+    div/section-inner
+      h2/section-title [Title]
+      div/access-content
+        div/access-info [StoreInfo]
+          p
+          dl
+            dt
+            dd
+            dt
+            dd
+            dt
+            dd
+        div/access-map [Map]
+  section/section/reservation/#reservation
+    div/section-inner
+      h2/section-title [Title]
+      p [Text]
+      a##/button [Button]
+
+footer
+  p [Copyright]
+  p [Address]
