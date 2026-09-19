@@ -34,6 +34,10 @@ body {
   align-items: center;
   padding: 24px 40px;
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .site-header h1 {
@@ -93,7 +97,14 @@ body {
   color: #fff;
   background-color: #222;
   text-decoration: none;
-  letter-spacing: 0.08em;
+  letter-spacing: .08em;
+  border-radius: 50px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  opacity: 0.8;
 }
 
 /* About */
@@ -127,6 +138,13 @@ body {
 .menu-item {
   padding: 30px;
   background-color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .menu-item h3 {
@@ -144,6 +162,7 @@ body {
   font-weight: bold;
   text-decoration: underline;
 }
+
 
 /* Gallery */
 #gallery {
@@ -163,6 +182,8 @@ body {
   justify-content: center;
   background-color: #e5e0d8;
   font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Access */
@@ -216,15 +237,41 @@ body {
   line-height: 1.8;
 }
 
+.reservation .button {
+  background-color: #fff;
+  color: #111;
+}
+
 /* Footer */
 footer {
   padding: 30px 20px;
   text-align: center;
   background-color: #111;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.8;
 }
+
+
+
+/* JSクラス追加 */
+/* Headerのスクロール制御 */
+.site-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.90);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* インタラクション */
+.menu-item.active {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-item.active {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
