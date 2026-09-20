@@ -65,18 +65,31 @@ body {
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
-  background-color: #f3efe8;
   text-align: center;
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 .hero-content {
   max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-label {
   margin-bottom: 20px;
   font-size: 20px;
   letter-spacing: 0.2em;
+  color: #f8f5ef;
 }
 
 .hero h2 {
@@ -84,11 +97,13 @@ body {
   font-size: 56px;
   line-height: 1.2;
   letter-spacing: 0.04em;
+  color: #f8f5ef;
 }
 
 .hero-description {
   margin-bottom: 40px;
   line-height: 1.8;
+  color: #f8f5ef;
 }
 
 .button {
@@ -147,6 +162,14 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
+.menu-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 24px;
+}
+
 .menu-item h3 {
   margin-bottom: 16px;
   font-size: 20px;
@@ -184,6 +207,14 @@ body {
   font-size: 14px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Access */
@@ -195,6 +226,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
+  align-items: stretch;
 }
 
 .access-info {
@@ -213,12 +245,34 @@ body {
   margin-bottom: 12px;
 }
 
+.map-link {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 12px 24px;
+  color: #fff;
+  background-color: #222;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: opacity 0.3s ease;
+}
+
+.map-link:hover {
+  opacity: 0.7;
+}
+
 .access-map {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
   min-height: 300px;
   background-color: #e5e0d8;
+  overflow: hidden;
+}
+
+.access-map iframe {
+  width: 100%;
+  height: 400px;
+  display: block;
+  border: 0;
 }
 
 /* Reservation */
@@ -323,4 +377,9 @@ footer {
   .access-map {
     min-height: 250px;
   }
+
+  .access-map iframe {
+    height: 300px;
+  }
+
 }
