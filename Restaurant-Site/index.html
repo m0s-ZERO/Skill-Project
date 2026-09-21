@@ -107,9 +107,10 @@
               <dt>最寄駅</dt>
               <dd>○○駅 徒歩5分</dd>
             </dl>
-            <a href="https://www.google.com/maps" class="map-link" target="_blank" rel="noopener noreferrer">Google Mapsで見る</a>
-            </div>
-            <div class="access-map">
+            <a href="https://www.google.com/maps" class="map-link" target="_blank" rel="noopener noreferrer">Google
+              Mapsで見る</a>
+          </div>
+          <div class="access-map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.656784920608!2d139.80812547642984!3d35.71006267257799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed0d12f9adf%3A0x7d1d4fb31f43f72a!2z5p2x5Lqs44K544Kr44Kk44OE44Oq44O8!5e0!3m2!1sja!2sjp!4v1789920664171!5m2!1sja!2sjp"
               width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -123,10 +124,39 @@
       <div class="section-inner">
         <h2 class="section-title">Reservation</h2>
         <p>大切な時間を、Luna Tableで...</p>
-        <a href="#" class="button">予約する</a>
+        <form class="reservation-form">
+          <div class="form-group">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" placeholder="お名前を入力してください" required>
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">電話番号</label>
+            <input type="tel" id="phone" name="phone" placeholder="090-1234-5678" required>
+          </div>
+          <div class="form-group">
+            <label for="date">ご来店日</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time">ご来店時間</label>
+            <input type="time" id="time" name="time" required>
+          </div>
+          <div class="form-group">
+            <label for="guests">人数（1〜10名）</label>
+            <input type="number" id="guests" name="guests" min="1" max="10" placeholder="例：2" required>
+          </div>
+          <div class="form-group">
+            <label for="message">ご要望・備考</label>
+            <textarea id="message" name="message" rows="5" placeholder="ご要望があればご入力ください"></textarea>
+          </div>
+          <button type="submit" class="reservation-button">予約する</button>
+        </form>
       </div>
     </section>
-
   </main>
 
   <footer>

@@ -56,7 +56,29 @@ main
     div/section-inner
       h2/section-title [Title]
       p [Text]
-      a##/button [Button]
+      form/reservation-form
+        div/form-group
+          label [name]
+          input/#name [text]
+        div/form-group
+          label [email]
+          input/#email [email]
+        div/form-group
+          label [phone]
+          input/#phone [tel]
+        div/form-group
+          label [date]
+          input/#date [date]
+        div/form-group
+          label [time]
+          input/#time [time]
+        div/form-group
+          label [guests]
+          input/#guests [number]
+        div/form-group
+          label [message]
+          textarea/#message [message]
+        button/reservation-button [submit]
 
 footer
   p [Copyright]
