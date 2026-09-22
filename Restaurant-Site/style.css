@@ -145,12 +145,16 @@ body {
 }
 
 .menu-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0;
 }
 
 .menu-item {
+  flex: 0 0 400px;
+  scroll-snap-align: center;
   padding: 30px;
   background-color: #fff;
   cursor: pointer;
@@ -317,13 +321,13 @@ body {
   border-radius: 8px;
   box-sizing: border-box;
   font-family: inherit;
-  transition: border 0.3s ease;
+  transition: border 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border: 3px solid #2e7edf;
+  border: 2px solid #2e72df;
 }
 
 .reservation-button {
@@ -355,8 +359,6 @@ footer {
   line-height: 1.8;
 }
 
-
-
 /* JSクラス追加 */
 /* Headerのスクロール制御 */
 .site-header.scrolled {
@@ -366,7 +368,7 @@ footer {
 
 /* インタラクション */
 .menu-item.active {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
@@ -376,8 +378,18 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    min-height: 30vh;
+    padding: 60px 20px;
+  }
 
+  .menu-item img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 767px) {
   .site-header {
     flex-direction: column;
     gap: 20px;
@@ -400,16 +412,13 @@ footer {
   }
 
   .hero {
-    min-height: 70vh;
+    min-height: 45vh;
     padding: 60px 20px;
+    background-position: center center;
   }
 
   .hero h2 {
     font-size: 36px;
-  }
-
-  .menu-list {
-    grid-template-columns: 1fr;
   }
 
   .gallery {

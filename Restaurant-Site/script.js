@@ -1,12 +1,3 @@
-// ▫データ
-// ▫DOM
-// ▫状態
-// ▫関数
-// ▫イベント
-// ▫初期表示
-
-
-
 // スムーススクロール
 const navLinks = document.querySelectorAll(".site-nav a");
 navLinks.forEach((link) => {
@@ -37,6 +28,19 @@ const menuItems = document.querySelectorAll(".menu-item");
 menuItems.forEach((item) => {
   item.addEventListener("click", () => {
     item.classList.toggle("active");
+  });
+});
+
+// Menu横スクロール連動
+const menuList = document.querySelector(".menu-list");
+menuList.addEventListener("scroll", function () {
+  const scrollLeft = menuList.scrollLeft;
+
+  menuItems.forEach(function (item, index) {
+    const position = index * 430 - scrollLeft;
+    const rotate = position / 30;
+
+    item.style.transform = `rotateY(${rotate}deg)`;
   });
 });
 

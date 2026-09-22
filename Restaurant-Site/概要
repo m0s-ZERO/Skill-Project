@@ -25,7 +25,7 @@ main
     div/section-inner
       h2/section-title [Title]
       div/menu-list
-        article*3/menu-item [MenuItem]
+        article*6/menu-item [MenuItem]
           img
           h3
           p
