@@ -1,4 +1,4 @@
-## Luna Table
+## m0s Table
 
 ### Version 1.0 完成
 - 飲食店サイトを想定したWebサイト制作
