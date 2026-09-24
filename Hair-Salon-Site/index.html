@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>m0s Hair</title>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 class="logo">m0s Hair</h1>
+    <nav class="nav">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#space">Private Space</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#gallery">Style Gallery</a></li>
+        <li><a href="#menu">Menu & Price</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#access">Access</a></li>
+        <li><a href="#reservation">Reservation</a></li>
+      </ul>
+    </nav>
+    <button class="menu-button">☰</button>
+  </header>
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>m0s Hair</h2>
+        <p class="hero-catch">落ち着いた空間と時間を、ゆっくりと。</p>
+        <p class="hero-sub">完全個室のプライベート美容室</p>
+        <a href="#reservation" class="button">予約する</a>
+      </div>
+    </section>
+
+    <!-- About / Concept -->
+    <section id="about" class="about">
+      <div class="about-image">
+        <img src="images/about.png" alt="m0s Hairの店内">
+      </div>
+      <div class="about-content">
+        <h2>About m0s Hair</h2>
+        <p class="section-catch">自分だけの時間を、ゆっくりと。</p>
+        <p>m0s Hairは、完全個室のプライベート美容室。</p>
+        <p>周りを気にせず過ごせる空間で、<br>一人ひとりに合わせたマンツーマン施術を提供します。</p>
+        <p>丁寧なカウンセリングを通して、<br>あなたに似合うスタイルを一緒に見つけていきます。</p>
+      </div>
+    </section>
+    <!-- Private Space -->
+    <section id="space" class="space">
+      <div class="section-heading">
+        <h2>Private Space</h2>
+        <p>周りを気にせず、ゆっくりと過ごせるプライベート空間。</p>
+      </div>
+      <div class="space-gallery">
+        <div class="space-item">
+          <img src="images/private-room.png" alt="個室施術スペース">
+          <h3>Private Room</h3>
+          <p>個室施術スペース</p>
+        </div>
+        <div class="space-item">
+          <img src="images/styling-space.png" alt="セットスペース">
+          <h3>Styling Space</h3>
+          <p>スタイリングスペース</p>
+        </div>
+        <div class="space-item">
+          <img src="images/shampoo-space.png" alt="シャンプースペース">
+          <h3>Shampoo Space</h3>
+          <p>シャンプースペース</p>
+        </div>
+        <div class="space-item">
+          <img src="images/interior.png" alt="m0s Hairの店内">
+          <h3>Interior</h3>
+          <p>店内全体</p>
+        </div>
+      </div>
+    </section>
+    <!-- Staff -->
+    <section id="staff" class="staff">
+      <div class="section-heading">
+        <h2>Staff</h2>
+        <p>一人ひとりに寄り添い、あなたに似合うスタイルをご提案します。</p>
+      </div>
+      <div class="staff-list">
+        <article class="staff-card">
+          <div class="staff-image">
+            <img src="images/staff-01.png" alt="波佐見 切子">
+          </div>
+          <div class="staff-content">
+            <p class="staff-role">Stylist</p>
+            <h3>波佐見 切子</h3>
+            <p class="staff-specialty">Cut / Color / Natural Style</p>
+            <p>丁寧なカウンセリングを大切にし、<br>一人ひとりのライフスタイルに合わせた<br>スタイルをご提案します。</p>
+          </div>
+        </article>
+        <article class="staff-card">
+          <div class="staff-image">
+            <img src="images/staff-02.png" alt="波佐見 切男">
+          </div>
+          <div class="staff-content">
+            <p class="staff-role">Stylist</p>
+            <h3>波佐見 切男</h3>
+            <p class="staff-specialty">Men's / Perm / Casual Style</p>
+            <p>ナチュラルからトレンドまで、<br>毎日のスタイリングが楽しくなる<br>スタイルをご提案します。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- Style Gallery -->
+    <section id="gallery" class="gallery">
+      <div class="section-heading">
+        <h2>Style Gallery</h2>
+        <p>あなたに似合うスタイルを。</p>
+      </div>
+      <div class="gallery-category">
+        <button class="category-button active" data-category="all">All</button>
+        <button class="category-button" data-category="cut">Cut</button>
+        <button class="category-button" data-category="color">Color</button>
+        <button class="category-button" data-category="perm">Perm</button>
+        <button class="category-button" data-category="mens">Men's</button>
+      </div>
+      <div class="gallery-list">
+        <article class="gallery-item" data-category="cut">
+          <img src="images/style-cut-01.png" alt="ナチュラルカット">
+          <div class="gallery-info">
+            <h3>Natural Cut</h3>
+            <p>Cut</p>
+          </div>
+        </article>
+        <article class="gallery-item" data-category="color">
+          <img src="images/style-color-01.png" alt="ナチュラルカラー">
+          <div class="gallery-info">
+            <h3>Natural Color</h3>
+            <p>Color</p>
+          </div>
+        </article>
+        <article class="gallery-item" data-category="perm">
+          <img src="images/style-perm-01.jpg" alt="ナチュラルパーマ">
+          <div class="gallery-info">
+            <h3>Soft Perm</h3>
+            <p>Perm</p>
+          </div>
+        </article>
+        <article class="gallery-item" data-category="mens">
+          <img src="images/style-mens-01.jpg" alt="メンズスタイル">
+          <div class="gallery-info">
+            <h3>Men's Style</h3>
+            <p>Men's</p>
+          </div>
+        </article>
+      </div>
+      <!-- Image Modal -->
+      <div class="gallery-modal">
+        <button class="modal-close">×</button>
+        <img src="" alt="拡大表示">
+      </div>
+    </section>
+    <!-- Menu & Price -->
+    <section id="menu" class="menu">
+      <div class="section-heading">
+        <h2>Menu & Price</h2>
+        <p>一人ひとりの髪質やスタイルに合わせた施術をご提案します。</p>
+      </div>
+      <div class="menu-list">
+        <div class="menu-category">
+          <h3>CUT</h3>
+          <div class="menu-item">
+            <span>カット</span>
+            <span>¥5,500</span>
+          </div>
+          <div class="menu-item">
+            <span>メンズカット</span>
+            <span>¥5,000</span>
+          </div>
+          <div class="menu-item">
+            <span>眉毛カット</span>
+            <span>¥1,100</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3>COLOR</h3>
+          <div class="menu-item">
+            <span>カラー</span>
+            <span>¥7,700〜</span>
+          </div>
+          <div class="menu-item">
+            <span>カット＋カラー</span>
+            <span>¥12,000〜</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3>PERM</h3>
+          <div class="menu-item">
+            <span>パーマ</span>
+            <span>¥8,800〜</span>
+          </div>
+          <div class="menu-item">
+            <span>カット＋パーマ</span>
+            <span>¥13,000〜</span>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3>TREATMENT</h3>
+          <div class="menu-item">
+            <span>トリートメント</span>
+            <span>¥3,300〜</span>
+          </div>
+        </div>
+      </div>
+      <p class="menu-note">※料金は髪の長さ・施術内容により異なる場合があります。</p>
+      <a href="#reservation" class="button">予約する</a>
+    </section>
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+      <div class="section-heading">
+        <h2>Reviews</h2>
+        <p>お客様からいただいた声をご紹介します。</p>
+      </div>
+      <div class="review-summary">
+        <strong>★ 4.9</strong>
+        <p>5.0 / 5.0</p>
+        <p>128 Reviews</p>
+      </div>
+      <div class="review-list">
+        <article class="review-card">
+          <div class="review-rating">
+            ★★★★★
+          </div>
+          <p>初めての利用でしたが、個室なので周りを気にせず過ごせました。<br>カウンセリングも丁寧で、仕上がりにも大満足です。</p>
+          <div class="review-info">
+            <span>30代 / 女性</span>
+            <span>カット</span>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-rating">
+            ★★★★★
+          </div>
+          <p>落ち着いた雰囲気で、最初から最後までリラックスして過ごせました。<br>自分に合うスタイルを提案してもらえて良かったです。</p>
+          <div class="review-info">
+            <span>20代 / 男性</span>
+            <span>メンズカット</span>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-rating">
+            ★★★★★
+          </div>
+          <p>髪質や悩みをしっかり聞いてくれて安心できました。<br>店内もきれいで、また利用したいと思います。</p>
+          <div class="review-info">
+            <span>30代 / 女性</span>
+            <span>カット＋カラー</span>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-rating">
+            ★★★★★
+          </div>
+          <p>完全個室なので他のお客様を気にせず過ごせるのが良かったです。<br>仕上がりもイメージ通りでした。</p>
+          <div class="review-info">
+            <span>40代 / 男性</span>
+            <span>パーマ</span>
+          </div>
+        </article>
+      </div>
+      <a href="#reservation" class="button">予約する</a>
+    </section>
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="section-heading">
+        <h2>FAQ</h2>
+        <p>よくいただくご質問にお答えします。</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>完全個室ですか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>はい。m0s Hairは完全個室のプライベート空間です。<br>周りを気にせず、ゆっくりとお過ごしいただけます。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>初めてでも利用できますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>はい、初めてのお客様もご利用いただけます。<br>丁寧なカウンセリングを行い、ご希望のスタイルをお伺いします。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>予約はどのようにできますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>Web予約フォームからご予約いただけます。<br>必要事項をご入力のうえ、お申し込みください。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>キャンセルはできますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>キャンセルをご希望の場合は、できるだけ早めにご連絡ください。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>支払い方法を教えてください？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>現金・クレジットカード・PayPay・各種キャッシュレス決済に対応しています。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>駐車場はありますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>はい。店舗専用駐車場を5台分ご用意しています。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Access -->
+    <section id="access" class="access">
+      <div class="section-heading">
+        <h2>Access</h2>
+        <p>ご来店の際はこちらをご確認ください。</p>
+      </div>
+      <div class="access-content">
+        <div class="access-info">
+          <h3>m0s Hair</h3>
+          <dl class="access-list">
+            <div class="access-item">
+              <dt>Address</dt>
+              <dd>〒105-0011<br>東京都港区芝公園4丁目2番8号</dd>
+            </div>
+            <div class="access-item">
+              <dt>Access</dt>
+              <dd>都営大江戸線 赤羽橋駅から徒歩5分</dd>
+            </div>
+            <div class="access-item">
+              <dt>Hours</dt>
+              <dd>10:00 - 20:00</dd>
+            </div>
+            <div class="access-item">
+              <dt>Closed</dt>
+              <dd>毎週火曜日</dd>
+            </div>
+            <div class="access-item">
+              <dt>Parking</dt>
+              <dd>店舗専用駐車場 5台</dd>
+            </div>
+            <div class="access-item">
+              <dt>TEL</dt>
+              <dd>00-0000-0000</dd>
+            </div>
+          </dl>
+          <a href="https://www.google.com/maps/search/?api=1&query=東京タワー" class="map-button" target="_blank"
+            rel="noopener noreferrer">Google Mapsで見る</a>
+        </div>
+        <div class="access-map">
+          <iframe src="https://www.google.com/maps?q=東京タワー&output=embed" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade" title="m0s Hair 店舗所在地"></iframe>
+        </div>
+      </div>
+    </section>
+    <!-- SNS -->
+    <!-- SNS -->
+    <section class="sns">
+      <div class="section-heading">
+        <h2>Follow Us</h2>
+        <p>最新のスタイルやお店の情報を発信しています。</p>
+      </div>
+      <div class="sns-list">
+        <a href="#" class="sns-link" target="_blank" rel="noopener noreferrer">
+          <span class="sns-name">Instagram</span>
+          <span class="sns-text">@m0s_hair</span>
+        </a>
+        <a href="#" class="sns-link" target="_blank" rel="noopener noreferrer">
+          <span class="sns-name">LINE</span>
+          <span class="sns-text">@m0s_hair</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Reservation -->
+    <section id="reservation" class="reservation">
+      <div class="section-heading">
+        <h2>Reservation</h2>
+        <p>ご希望の日時・メニューを入力してご予約ください。</p>
+      </div>
+      <form class="reservation-form">
+        <div class="form-group">
+          <label for="name">お名前</label>
+          <input type="text" id="name" name="name" placeholder="お名前を入力してください" required>
+        </div>
+        <div class="form-group">
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">電話番号</label>
+          <input type="tel" id="tel" name="tel" placeholder="000-0000-0000" required>
+        </div>
+        <div class="form-group">
+          <label for="menu-select">希望メニュー</label>
+          <select id="menu-select" name="menu" required>
+            <option value="">選択してください</option>
+            <option value="cut">カット</option>
+            <option value="mens-cut">メンズカット</option>
+            <option value="color">カラー</option>
+            <option value="cut-color">カット＋カラー</option>
+            <option value="perm">パーマ</option>
+            <option value="cut-perm">カット＋パーマ</option>
+            <option value="treatment">トリートメント</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">希望日</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">希望時間</label>
+          <select id="time" name="time" required>
+            <option value="">選択してください</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="staff-select">担当者</label>
+          <select id="staff-select" name="staff">
+            <option value="">指名なし</option>
+            <option value="kiriko">波佐見 切子</option>
+            <option value="kirio">波佐見 切男</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">ご要望・ご質問</label>
+          <textarea id="message" name="message" rows="6" placeholder="ご要望やご質問があればご入力ください"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit">予約を申し込む</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>m0s Hair</h2>
+        <p>落ち着いた空間と時間を、ゆっくりと。</p>
+      </div>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#space">Private Space</a></li>
+          <li><a href="#staff">Staff</a></li>
+          <li><a href="#gallery">Style Gallery</a></li>
+          <li><a href="#menu">Menu & Price</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#access">Access</a></li>
+          <li><a href="#reservation">Reservation</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 m0s Hair. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
