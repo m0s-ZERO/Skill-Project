@@ -108,6 +108,10 @@ textarea {
   letter-spacing: 0.08em;
 }
 
+.sp-break {
+  display: none;
+}
+
 .hero-sub {
   margin-bottom: 35px;
   font-size: 16px;
@@ -784,4 +788,294 @@ button {
 ::selection {
   background-color: #222;
   color: #fff;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+
+  /* Header */
+  .header {
+    padding: 18px 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    color: #222;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 70vh;
+    padding: 60px 15px;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .hero h2 {
+    margin-bottom: 15px;
+    font-size: 42px;
+  }
+
+  .hero-catch {
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .hero-sub {
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+
+  .button {
+    padding: 13px 32px;
+    font-size: 13px;
+  }
+
+  /* About */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 80px 20px;
+  }
+
+  .about-image {
+    order: 2;
+  }
+
+  .about-content {
+    order: 1;
+  }
+
+  .about-content h2 {
+    font-size: 28px;
+  }
+
+  .about-content .section-catch {
+    font-size: 18px;
+  }
+
+  /* Private Space */
+  .space {
+    padding: 80px 20px;
+  }
+
+  .section-heading {
+    margin-bottom: 40px;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .space-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .space-item h3 {
+    padding: 15px 15px 5px;
+    font-size: 16px;
+  }
+
+  .space-item p {
+    padding: 0 15px 15px;
+    font-size: 12px;
+  }
+
+  /* Staff */
+  .staff {
+    padding: 80px 20px;
+  }
+
+  .staff-list {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .staff-card {
+    grid-template-columns: 1fr;
+  }
+
+  .staff-image img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .staff-content {
+    padding: 25px;
+  }
+
+  .staff-content h3 {
+    font-size: 22px;
+  }
+
+  /* Style Gallery */
+  .gallery {
+    padding: 80px 20px;
+  }
+
+  .gallery-category {
+    gap: 8px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+  }
+
+  .category-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .gallery-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .gallery-info {
+    padding: 15px;
+  }
+
+  .gallery-info h3 {
+    font-size: 14px;
+  }
+
+  .gallery-info p {
+    font-size: 11px;
+  }
+
+  /* Menu */
+  .menu {
+    padding: 80px 20px;
+  }
+
+  .menu-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .menu-category {
+    padding: 25px 20px;
+  }
+
+  /* Reviews */
+  .reviews {
+    padding: 80px 20px;
+  }
+
+  .review-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .review-card {
+    padding: 25px 20px;
+  }
+
+  /* FAQ */
+  .faq {
+    padding: 80px 20px;
+  }
+
+  .faq-question {
+    padding: 20px 0;
+    font-size: 14px;
+  }
+
+  .faq-answer {
+    font-size: 13px;
+  }
+
+  /* Access */
+  .access {
+    padding: 80px 20px;
+  }
+
+  .access-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .access-info h3 {
+    font-size: 24px;
+  }
+
+  .access-item {
+    grid-template-columns: 80px 1fr;
+    gap: 15px;
+  }
+
+  .access-map iframe {
+    height: 350px;
+  }
+
+  /* SNS */
+  .sns {
+    padding: 70px 20px;
+  }
+
+  .sns-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .sns-link {
+    width: 100%;
+  }
+
+  /* Reservation */
+  .reservation {
+    padding: 80px 20px;
+  }
+
+  .reservation-form {
+    width: 100%;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 13px 14px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 50px 20px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 35px;
+    padding-bottom: 35px;
+  }
+
+  .footer-nav ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sp-break {
+    display: block;
+  }
 }
