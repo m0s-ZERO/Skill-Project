@@ -44,15 +44,26 @@ textarea {
   align-items: center;
   justify-content: space-between;
   padding: 20px 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: #fff;
-  border-bottom: 1px solid #eee;
-  position: relative;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.header.is-scrolled {
+  background-color: rgba(255, 255, 255, 0.65);
 }
 
 .logo {
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .nav ul {
@@ -66,6 +77,7 @@ textarea {
   font-size: 14px;
   letter-spacing: 0.05em;
   transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav a:hover {
@@ -74,6 +86,8 @@ textarea {
 
 .menu-button {
   display: none;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* =========================
@@ -85,12 +99,18 @@ textarea {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #f5f3f0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.35)),
+    url("images/salon.png");
+  background-size: cover;
+  background-position: center;
   padding: 80px 20px;
 }
 
 .hero-content {
   max-width: 800px;
+  color: #fff;
 }
 
 .hero h2 {
@@ -113,7 +133,7 @@ textarea {
 .hero-sub {
   margin-bottom: 35px;
   font-size: 16px;
-  color: #666;
+  color: #fff;
   letter-spacing: 0.08em;
 }
 
@@ -121,15 +141,16 @@ textarea {
 .button {
   display: inline-block;
   padding: 14px 40px;
-  background-color: #222;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
   font-size: 14px;
   letter-spacing: 0.08em;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
-  opacity: 0.7;
+  background-color: #fff;
+  transform: translateY(-2px);
 }
 
 /* =========================
@@ -367,7 +388,7 @@ textarea {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1100;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -447,6 +468,21 @@ textarea {
   font-size: 12px;
 }
 
+.menu .button {
+  display: inline-block;
+  padding: 14px 40px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.menu .button:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
 /* =========================
    Reviews
 ========================= */
@@ -509,6 +545,21 @@ textarea {
   font-size: 12px;
 }
 
+
+.reviews .button {
+  display: inline-block;
+  padding: 14px 40px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.reviews .button:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
 
 /* =========================
    FAQ
@@ -645,10 +696,24 @@ textarea {
 }
 
 .sns-name {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin-bottom: 5px;
   font-size: 16px;
   font-weight: 500;
+}
+
+.sns-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
 }
 
 .sns-text {
@@ -803,13 +868,26 @@ button {
 }
 
 /* =========================
-   JS
-========================= */
-
-
-/* =========================
    Responsive
 ========================= */
+@media (max-width:1100px) and (min-width:769px) {
+  .header {
+    padding: 18px 30px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav ul {
+    gap: 16px;
+  }
+
+  .nav a {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 768px) {
 
   /* Header */

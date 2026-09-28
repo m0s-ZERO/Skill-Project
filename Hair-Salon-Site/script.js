@@ -1,5 +1,3 @@
-// ▫データ
-// ▫DOM
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 const navLinks = document.querySelectorAll(".nav a");
@@ -15,9 +13,8 @@ const faqQuestions = document.querySelectorAll(".faq-question");
 
 const reservationForm = document.querySelector(".reservation-form");
 
-// ▫状態
-// ▫関数
-// ▫イベント
+const header = document.querySelector(".header");
+
 
 // ハンバーガーメニュー
 menuButton.addEventListener("click", () => {
@@ -91,4 +88,11 @@ reservationForm.addEventListener("submit", (event) => {
   reservationForm.reset();
 });
 
-// ▫初期表示
+// ヘッダーのスクロールインタラクション
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    header.classList.add("is-scrolled");
+  } else {
+    header.classList.remove("is-scrolled");
+  }
+});
