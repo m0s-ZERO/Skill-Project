@@ -15,7 +15,7 @@
       <a href="#">m0s MOVIE</a>
     </div>
 
-    <nav class="header-nav">
+    <nav class="header-nav" id="header-nav">
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#service">Service</a></li>
@@ -28,7 +28,7 @@
       </ul>
     </nav>
 
-    <button class="menu-button">
+    <button type="button" class="menu-button" aria-label="メニューを開く" aria-expanded="false" aria-controls="header-nav">
       <span></span>
       <span></span>
       <span></span>
@@ -41,7 +41,7 @@
     <section class="hero" id="hero">
 
       <div class="hero-image">
-        <img src="images/hero/hero.jpg" alt="m0s MOVIE">
+        <img src="images/hero.jpg" alt="m0s MOVIE">
       </div>
 
       <div class="hero-overlay"></div>
@@ -89,7 +89,7 @@
       </div>
 
       <div class="about-image">
-        <img src="images/about/about.jpg" alt="m0s MOVIE creative">
+        <img src="images/about.jpg" alt="m0s MOVIE creative">
       </div>
 
     </section>
@@ -109,46 +109,31 @@
         <article class="service-item">
           <span class="service-number">01</span>
           <h3>MV Production</h3>
-          <p>
-            アーティストの音楽と世界観を映像として表現する
-            ミュージックビデオを制作します。
-          </p>
+          <p>アーティストの音楽と世界観を映像として表現するミュージックビデオを制作します。</p>
         </article>
 
         <article class="service-item">
           <span class="service-number">02</span>
           <h3>Promotion Movie</h3>
-          <p>
-            ブランドや企業、イベントの魅力を伝える
-            プロモーション映像を制作します。
-          </p>
+          <p>ブランドや企業、イベントの魅力を伝えるプロモーション映像を制作します。</p>
         </article>
 
         <article class="service-item">
           <span class="service-number">03</span>
           <h3>Social Video</h3>
-          <p>
-            SNSやショート動画に適した、
-            短尺で印象に残る映像を制作します。
-          </p>
+          <p>SNSやショート動画に適した、短尺で印象に残る映像を制作します。</p>
         </article>
 
         <article class="service-item">
           <span class="service-number">04</span>
           <h3>Photography</h3>
-          <p>
-            アーティストやブランドのビジュアルを
-            写真として撮影します。
-          </p>
+          <p>アーティストやブランドのビジュアルを写真として撮影します。</p>
         </article>
 
         <article class="service-item">
           <span class="service-number">05</span>
           <h3>Creative Direction</h3>
-          <p>
-            映像だけでなく、企画からビジュアル全体の
-            方向性までディレクションします。
-          </p>
+          <p>映像だけでなく、企画からビジュアル全体の方向性までディレクションします。</p>
         </article>
 
       </div>
@@ -231,7 +216,7 @@
 
         <h2 class="concept-title">
           映像で、<br>
-          世界観をつくる。
+          世界観を<br>つくる。
         </h2>
 
         <p class="concept-text">
@@ -313,9 +298,8 @@
 
           <div class="company-info-item">
             <dt>Email</dt>
-            <dd>hello@m0s-movie.com</dd>
+            <dd><a href="mailto:hello@m0s-movie.com">hello@m0s-movie.com</a></dd>
           </div>
-
         </dl>
 
       </div>
@@ -381,7 +365,7 @@
       <div class="faq-list">
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button type="button" class="faq-question" aria-expanded="false">
             <span>映像制作の費用はどのくらいですか？</span>
             <span class="faq-icon">+</span>
           </button>
@@ -395,7 +379,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button type="button" class="faq-question" aria-expanded="false">
             <span>MVの制作を依頼できますか？</span>
             <span class="faq-icon">+</span>
           </button>
@@ -408,7 +392,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button type="button" class="faq-question" aria-expanded="false">
             <span>撮影場所はこちらで用意する必要がありますか？</span>
             <span class="faq-icon">+</span>
           </button>
@@ -421,7 +405,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button type="button" class="faq-question" aria-expanded="false">
             <span>納品までどのくらいかかりますか？</span>
             <span class="faq-icon">+</span>
           </button>
@@ -435,7 +419,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button type="button" class="faq-question" aria-expanded="false">
             <span>SNS用の短い動画だけでも依頼できますか？</span>
             <span class="faq-icon">+</span>
           </button>

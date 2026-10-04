@@ -60,7 +60,7 @@ section {
 .section-title {
   font-size: clamp(40px, 5vw, 72px);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.03em;
 }
 
@@ -85,7 +85,6 @@ section {
   transition:
     background-color 0.3s ease,
     backdrop-filter 0.3s ease,
-    transform 0.3s ease;
 }
 
 .header-logo a {
@@ -104,7 +103,6 @@ section {
 .header-nav a {
   font-size: 13px;
   letter-spacing: 0.08em;
-  transition: opacity 0.3s ease;
 }
 
 .header-nav a:hover {
@@ -237,7 +235,6 @@ section {
 
   font-size: 14px;
   letter-spacing: 0.08em;
-  transition: opacity 0.3s ease;
 }
 
 .about-link:hover {
@@ -284,10 +281,16 @@ section {
   padding: 48px 40px;
 
   border-bottom: 1px solid #2a2a2a;
+
+  transition: background-color 0.3s ease;
 }
 
 .service-item:nth-child(odd) {
   border-right: 1px solid #2a2a2a;
+}
+
+.service-item:hover {
+  background-color: #111111;
 }
 
 .service-number {
@@ -314,14 +317,6 @@ section {
   color: #b5b5b5;
   font-size: 15px;
   line-height: 1.8;
-}
-
-.service-item {
-  transition: background-color 0.3s ease;
-}
-
-.service-item:hover {
-  background-color: #111111;
 }
 
 /* =========================
@@ -402,7 +397,7 @@ section {
 
   font-size: clamp(48px, 6vw, 88px);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.04em;
 }
 
@@ -821,8 +816,6 @@ textarea:focus-visible {
 .header.is-scrolled {
   background-color: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(10px);
-
-  transform: translateY(0);
 }
 
 /* FAQ Accordion */
@@ -874,6 +867,10 @@ textarea:focus-visible {
   /* Hero */
   .hero {
     padding: 0 6%;
+  }
+
+  .hero-image img {
+    object-position: 80% center;
   }
 
   .hero-title {
@@ -1106,7 +1103,5 @@ textarea:focus-visible {
   .menu-button.is-open span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
-
-  /* スクロールインタラクション */
 
 }
