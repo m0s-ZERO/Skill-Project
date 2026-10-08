@@ -57,6 +57,75 @@ p {
 }
 
 /* ==============================
+   cursor
+============================== */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 10px;
+  height: 10px;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-cursor span {
+  display: block;
+
+  transition:
+    transform 0.3s ease,
+    font-size 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.custom-cursor.is-hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.85;
+}
+
+.custom-cursor.is-menu {
+  transform: translate(-50%, -50%) scale(1.8);
+}
+
+.custom-cursor.is-view {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.custom-cursor.is-contact {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.custom-cursor.is-light {
+  color: #F7F7F5;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor.is-hidden {
+  opacity: 0;
+}
+
+.custom-cursor.is-changing span {
+  opacity: 0;
+}
+
+/* ==============================
    Header
 ============================== */
 
@@ -72,6 +141,19 @@ p {
 
   width: 100%;
   padding: 24px 40px;
+
+  background-color: #fff;
+
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.header.is-scrolled {
+  background-color: rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .header-logo {
@@ -89,6 +171,67 @@ p {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.12em;
+}
+
+/* ==============================
+   Menu
+============================== */
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  padding: 40px;
+
+  background-color: #111111;
+  color: #F7F7F5;
+
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+}
+
+.menu a {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.menu.is-open {
+  transform: translateX(0);
+}
+
+.menu-close {
+  position: fixed;
+  top: 24px;
+  right: 40px;
+  z-index: 1001;
+
+  color: #F7F7F5;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.menu-close.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ==============================
@@ -129,6 +272,44 @@ p {
 
 .hero-title span {
   display: block;
+}
+
+.hero-title span,
+.hero-label,
+.hero-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.hero.is-loaded .hero-label {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.is-loaded .hero-title span {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.is-loaded .hero-title span:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.hero.is-loaded .hero-title span:nth-child(2) {
+  transition-delay: 0.35s;
+}
+
+.hero.is-loaded .hero-title span:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.hero.is-loaded .hero-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.8s;
 }
 
 .hero-title span:nth-child(2) {
@@ -289,7 +470,16 @@ p {
   display: block;
 }
 
+.work-link:hover .work-image img {
+  transform: scale(1.05);
+}
+
+.work-link:hover .work-overlay {
+  opacity: 1;
+}
+
 .work-image {
+  position: relative;
   overflow: hidden;
   border: 1px solid #DDDDDD;
 }
@@ -298,6 +488,27 @@ p {
   display: block;
   width: 100%;
   height: auto;
+  transition: transform 0.6s ease;
+}
+
+.work-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(54, 87, 230, 0.85);
+  color: #F7F7F5;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .work-info {
@@ -332,6 +543,12 @@ p {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.08em;
+
+  transition: transform 0.3s ease;
+}
+
+.work-link:hover .work-view {
+  transform: translateX(10px);
 }
 
 /* ==============================
@@ -370,6 +587,32 @@ p {
 
   padding: 32px 0;
   border-bottom: 1px solid #DDDDDD;
+
+  position: relative;
+  transition: padding-left 0.4s ease;
+}
+
+.service-item::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  width: 0;
+  height: 2px;
+
+  background-color: #3157FF;
+
+  transition: width 0.4s ease;
+}
+
+.service-item:hover {
+  padding-left: 20px;
+}
+
+.service-item:hover::before {
+  width: 100%;
 }
 
 .service-number {
@@ -396,7 +639,14 @@ p {
   font-family: "Manrope", sans-serif;
   font-size: 24px;
   font-weight: 400;
+
+  transition: transform 0.3s ease;
 }
+
+.service-item:hover .service-arrow {
+  transform: translateX(8px);
+}
+
 
 /* ==============================
    Contact
@@ -405,6 +655,15 @@ p {
 .contact {
   padding: 180px 40px;
 
+  background-color: #F7F7F5;
+  color: #111111;
+
+  transition:
+    background-color 1s ease,
+    color 1s ease;
+}
+
+.contact.is-visible {
   background-color: #111111;
   color: #F7F7F5;
 }
@@ -503,6 +762,18 @@ p {
   letter-spacing: 0.08em;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ==============================
    PC Layout
@@ -528,6 +799,10 @@ p {
 ============================== */
 
 @media (max-width: 1023px) {
+
+  .custom-cursor {
+    display: none;
+  }
 
   .header {
     padding: 20px 24px;
@@ -578,6 +853,11 @@ p {
 
   .header-logo {
     font-size: 22px;
+  }
+
+  .menu-close {
+    top: 18px;
+    right: 20px;
   }
 
   .hero {

@@ -15,11 +15,25 @@
 </head>
 
 <body>
+  <div class="custom-cursor">
+    <span>●</span>
+  </div>
+
   <!-- Header -->
   <header class="header">
     <a href="#" class="header-logo">m0s</a>
-    <button class="menu-button" type="button">
+    <button class="menu-button" type="button" data-cursor="MENU">
       <span>MENU</span>
+    </button>
+    <nav class="menu">
+      <a href="#about">ABOUT</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#works">WORKS</a>
+      <a href="#service">SERVICE</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <button class="menu-close" type="button">
+      CLOSE
     </button>
   </header>
 
@@ -111,9 +125,10 @@
 
         <!-- m0s Hair -->
         <article class="work-item">
-          <a href="#" class="work-link">
+          <a href="#" class="work-link" data-cursor="VIEW">
             <div class="work-image">
               <img src="images/works/m0s-hair.png" alt="m0s Hair">
+              <span class="work-overlay">VIEW</span>
             </div>
             <div class="work-info">
               <h3 class="work-title">m0s Hair</h3>
@@ -125,9 +140,10 @@
 
         <!-- m0s MOVIE -->
         <article class="work-item">
-          <a href="#" class="work-link">
+          <a href="#" class="work-link" data-cursor="VIEW">
             <div class="work-image">
               <img src="images/works/m0s-movie.png" alt="m0s MOVIE">
+              <span class="work-overlay">VIEW</span>
             </div>
             <div class="work-info">
               <h3 class="work-title">m0s MOVIE</h3>
@@ -139,9 +155,10 @@
 
         <!-- m0s Table -->
         <article class="work-item">
-          <a href="#" class="work-link">
+          <a href="#" class="work-link" data-cursor="VIEW">
             <div class="work-image">
               <img src="images/works/m0s-table.png" alt="m0s Table">
+              <span class="work-overlay">VIEW</span>
             </div>
             <div class="work-info">
               <h3 class="work-title">m0s Table</h3>
@@ -153,9 +170,10 @@
 
         <!-- Weather App -->
         <article class="work-item">
-          <a href="#" class="work-link">
+          <a href="#" class="work-link" data-cursor="VIEW">
             <div class="work-image">
               <img src="images/works/weather-app.png" alt="Weather App">
+              <span class="work-overlay">VIEW</span>
             </div>
             <div class="work-info">
               <h3 class="work-title">Weather App</h3>
@@ -167,9 +185,10 @@
 
         <!-- Idea Vault -->
         <article class="work-item">
-          <a href="#" class="work-link">
+          <a href="#" class="work-link" data-cursor="VIEW">
             <div class="work-image">
               <img src="images/works/idea-vault.png" alt="Idea Vault">
+              <span class="work-overlay">VIEW</span>
             </div>
             <div class="work-info">
               <h3 class="work-title">Idea Vault</h3>
@@ -190,25 +209,25 @@
         </h2>
       </div>
       <div class="service-list">
-        <a href="#" class="service-item">
+        <a href="#" class="service-item" data-cursor="VIEW">
           <span class="service-number">01</span>
           <span class="service-name">WEB SITE</span>
           <span class="service-description">Webサイト制作</span>
           <span class="service-arrow">→</span>
         </a>
-        <a href="#" class="service-item">
+        <a href="#" class="service-item" data-cursor="VIEW">
           <span class="service-number">02</span>
           <span class="service-name">LP</span>
           <span class="service-description">ランディングページ制作</span>
           <span class="service-arrow">→</span>
         </a>
-        <a href="#" class="service-item">
+        <a href="#" class="service-item" data-cursor="VIEW">
           <span class="service-number">03</span>
           <span class="service-name">CORPORATE</span>
           <span class="service-description">企業サイト制作</span>
           <span class="service-arrow">→</span>
         </a>
-        <a href="#" class="service-item">
+        <a href="#" class="service-item" data-cursor="VIEW">
           <span class="service-number">04</span>
           <span class="service-name">WEB APP</span>
           <span class="service-description">Webアプリ制作</span>
@@ -227,7 +246,7 @@
           CREATE<br>
           TOGETHER.
         </h2>
-        <a href="#" class="contact-link">
+        <a href="#" class="contact-link" data-cursor="CONTACT">
           CONTACT <span>→</span>
         </a>
       </div>
@@ -253,7 +272,7 @@
     </div>
 
   </footer>
-
+  <script src="script.js"></script>
 </body>
 
 </html>
