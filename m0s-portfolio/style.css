@@ -460,6 +460,11 @@ p {
 
 .work-item {
   width: 70%;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.work-item:hover {
+  transform: translateY(-6px);
 }
 
 .work-item:nth-child(even) {
@@ -476,6 +481,7 @@ p {
 
 .work-link:hover .work-overlay {
   opacity: 1;
+  transform: scale(1);
 }
 
 .work-image {
@@ -489,6 +495,8 @@ p {
   width: 100%;
   height: auto;
   transition: transform 0.6s ease;
+  transform: scale(1);
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .work-overlay {
@@ -508,7 +516,10 @@ p {
   letter-spacing: 0.12em;
 
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: scale(0.98);
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .work-info {
@@ -544,11 +555,35 @@ p {
   font-weight: 600;
   letter-spacing: 0.08em;
 
-  transition: transform 0.3s ease;
+  transform: translateX(0);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .work-link:hover .work-view {
-  transform: translateX(10px);
+  transform: translateX(6px);
+}
+
+/* Keyboard focus interaction */
+.work-link:focus-visible {
+  outline: 2px solid #3657E6;
+  outline-offset: 6px;
+}
+
+.work-link:focus-visible .work-image img {
+  transform: scale(1.05);
+}
+
+.work-link:focus-visible .work-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.work-link:focus-visible .work-view {
+  transform: translateX(6px);
+}
+
+.work-item:focus-within {
+  transform: translateY(-6px);
 }
 
 /* ==============================
@@ -1036,4 +1071,47 @@ p {
     gap: 20px;
   }
 
+}
+
+@media (hover: none) {
+  .work-item:hover {
+    transform: none;
+  }
+
+  .work-link:hover .work-image img {
+    transform: none;
+  }
+
+  .work-link:hover .work-overlay {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  .work-link:hover .work-view {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .work-item,
+  .work-image img,
+  .work-overlay,
+  .work-view {
+    transition: none;
+  }
+
+  .work-item:hover {
+    transform: none;
+  }
+
+  .work-link:hover .work-image img,
+  .work-link:focus-visible .work-image img {
+    transform: none;
+  }
+
+  .work-link:hover .work-view,
+  .work-link:focus-visible .work-view {
+    transform: none;
+  }
 }
