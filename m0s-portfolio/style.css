@@ -624,7 +624,7 @@ p {
   border-bottom: 1px solid #DDDDDD;
 
   position: relative;
-  transition: padding-left 0.4s ease;
+  transition: padding-left 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .service-item::before {
@@ -639,7 +639,7 @@ p {
 
   background-color: #3157FF;
 
-  transition: width 0.4s ease;
+  transition: width 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .service-item:hover {
@@ -648,6 +648,11 @@ p {
 
 .service-item:hover::before {
   width: 100%;
+}
+
+.service-item:focus-visible {
+  outline: 2px solid #3157FF;
+  outline-offset: 6px;
 }
 
 .service-number {
@@ -675,7 +680,7 @@ p {
   font-size: 24px;
   font-weight: 400;
 
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
 .service-item:hover .service-arrow {
@@ -1090,6 +1095,18 @@ p {
   .work-link:hover .work-view {
     transform: none;
   }
+
+  .service-item:hover {
+    padding-left: 0;
+  }
+
+  .service-item:hover::before {
+    width: 0;
+  }
+
+  .service-item:hover .service-arrow {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1112,6 +1129,24 @@ p {
 
   .work-link:hover .work-view,
   .work-link:focus-visible .work-view {
+    transform: none;
+  }
+
+  .service-item,
+  .service-item::before,
+  .service-arrow {
+    transition: none;
+  }
+
+  .service-item:hover {
+    padding-left: 0;
+  }
+
+  .service-item:hover::before {
+    width: 0;
+  }
+
+  .service-item:hover .service-arrow {
     transform: none;
   }
 }
