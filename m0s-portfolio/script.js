@@ -114,6 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.classList.contains("is-open")) {
+      menu.classList.remove("is-open");
+      menuClose.classList.remove("is-visible");
+
+      window.scrollTo({
+        top: menuScrollPosition,
+        behavior: "smooth"
+      });
+    }
+  });
+
+
   // Header scroll
   const header = document.querySelector(".header");
 
