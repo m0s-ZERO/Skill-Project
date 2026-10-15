@@ -1,0 +1,254 @@
+/* =========================
+   Service Page
+========================= */
+
+:root {
+  --service-black: #111;
+  --service-white: #fff;
+  --service-gray: #777;
+  --service-border: #ddd;
+  --service-font-en: "Manrope", sans-serif;
+  --service-font-ja: "Noto Sans JP", sans-serif;
+}
+
+/* Reset */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Base */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--service-white);
+  color: var(--service-black);
+  font-family: var(--service-font-en), var(--service-font-ja), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* =========================
+   Service Detail
+========================= */
+
+.service-detail {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--service-white);
+  color: var(--service-black);
+  overflow: hidden;
+}
+
+/* Header */
+
+.service-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 40px;
+  background-color: var(--service-white);
+  border-bottom: 1px solid var(--service-border);
+}
+
+.service-detail-logo {
+  font-family: var(--service-font-en);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--service-black);
+}
+
+.service-detail-back {
+  font-family: var(--service-font-en);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--service-black);
+  transition: opacity 0.3s ease;
+}
+
+.service-detail-back:hover {
+  opacity: 0.5;
+}
+
+/* MAIN VISUAL */
+
+.service-detail-hero {
+  padding: 120px 8% 100px;
+}
+
+.service-detail-label {
+  margin-bottom: 24px;
+  color: #777;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.service-detail-title {
+  margin: 0;
+  font-size: clamp(48px, 10vw, 140px);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+
+.service-detail-lead {
+  margin-top: 40px;
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.9;
+}
+
+/* CONTENT SECTIONS */
+
+.service-detail-section {
+  padding: 80px 8%;
+  border-top: 1px solid #e5e5e5;
+}
+
+.service-detail-section-header {
+  margin-bottom: 40px;
+}
+
+.service-detail-section-label {
+  margin-bottom: 12px;
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.service-detail-section-title {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.service-detail-text {
+  font-size: 15px;
+  line-height: 2;
+}
+
+/* CONTACT CTA */
+
+.service-detail-cta {
+  padding: 80px 8%;
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.service-detail-cta-title {
+  margin: 0 0 50px;
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.service-detail-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 28px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.service-detail-cta-link:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+/* FOOTER */
+
+.service-detail-footer {
+  padding: 24px 5%;
+  color: #777;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  /* Header */
+  .service-detail-header {
+    padding: 24px 20px;
+  }
+
+  .service-detail-logo {
+    font-size: 24px;
+  }
+
+  .service-detail-back {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Main Visual */
+  .service-detail-hero {
+    padding: 90px 6% 70px;
+  }
+
+  .service-detail-title {
+    overflow-wrap: anywhere;
+  }
+
+  .service-detail-lead {
+    margin-top: 28px;
+  }
+
+  /* Content Sections */
+  .service-detail-section {
+    padding: 60px 6%;
+  }
+
+  /* Contact CTA */
+  .service-detail-cta {
+    padding: 75px 6%;
+  }
+}
+
+@media (max-width: 400px) {
+  .service-detail-header {
+    padding: 20px 16px;
+  }
+
+  .service-detail-logo {
+    font-size: 22px;
+  }
+
+  .service-detail-back {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .service-detail-back,
+  .service-detail-cta-link {
+    transition: none;
+  }
+}
