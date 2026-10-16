@@ -181,6 +181,17 @@ textarea {
   color: #111;
 }
 
+/* CONTACT ARROW ANIMATION */
+
+.service-detail-cta-link span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.service-detail-cta-link:hover span {
+  transform: translate(4px, -4px);
+}
+
 /* FOOTER */
 
 .service-detail-footer {
@@ -189,6 +200,27 @@ textarea {
   font-size: 12px;
   text-align: center;
 }
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.service-detail-section,
+.service-detail-cta {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.service-detail-section.is-visible,
+.service-detail-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -245,10 +277,34 @@ textarea {
   }
 }
 
+/* TOUCH DEVICE HOVER CONTROL */
+
+@media (hover: none) {
+  .service-detail-back:hover {
+    opacity: 1;
+  }
+
+  .service-detail-cta-link:hover {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  .service-detail-cta-link:hover span {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .service-detail-back,
   .service-detail-cta-link {
+    transition: none;
+  }
+
+  .service-detail-section,
+  .service-detail-cta {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }
