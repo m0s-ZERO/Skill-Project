@@ -200,11 +200,34 @@ p {
 }
 
 .menu a {
+  position: relative;
+  display: inline-block;
   font-family: "Manrope", sans-serif;
   font-size: clamp(48px, 8vw, 100px);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.05em;
+}
+
+/* MENU LINK HOVER */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.02em;
+
+  width: 100%;
+  height: 2px;
+
+  background-color: #F7F7F5;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.menu a:hover::after {
+  transform: scaleX(1);
 }
 
 .menu.is-open {
@@ -213,8 +236,8 @@ p {
 
 .menu-close {
   position: fixed;
-  top: 34px;
-  right: 35px;
+  top: 25px;
+  right: 25px;
   z-index: 1001;
 
   color: #F7F7F5;
@@ -227,12 +250,32 @@ p {
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity 0.3s ease;
+  padding: 10px 14px;
+  border: 1px solid #F7F7F5;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .menu-close.is-visible {
   opacity: 1;
   pointer-events: auto;
+}
+
+.menu-close:hover {
+  background-color: #F7F7F5;
+  color: #111111;
+}
+
+/* ==============================
+   MENU ACCESSIBILITY
+============================== */
+
+.menu a:focus-visible,
+.menu-close:focus-visible {
+  outline: 2px solid #F7F7F5;
+  outline-offset: 6px;
 }
 
 /* ==============================
