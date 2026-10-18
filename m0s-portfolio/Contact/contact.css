@@ -85,7 +85,7 @@ textarea {
 
 .section-label {
   margin: 0 0 30px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.15em;
 }
@@ -101,19 +101,53 @@ textarea {
 .contact-description {
   margin-top: 45px;
   font-family: var(--contact-font-ja);
-  font-size: 14px;
+  font-size: 18px;
   line-height: 2;
 }
 
-/* Form Heading */
+/* CONTACT セクション間の区切り線 */
+.contact-divider {
+  width: 100%;
+  max-width: 1400px;
+  height: 1px;
+  margin: 80px auto;
+  overflow: hidden;
+}
 
+/* 中央から左右に広がるライン */
+.contact-divider span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(34, 34, 34, 0.08) 10%,
+      rgba(34, 34, 34, 0.7) 50%,
+      rgba(34, 34, 34, 0.08) 90%,
+      transparent 100%);
+
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: contact-line-reveal 1.8s ease forwards;
+  animation-delay: 0.8s;
+}
+
+/* 中央から左右へ展開 */
+@keyframes contact-line-reveal {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Form Heading */
 .form-heading {
   margin-bottom: 55px;
+  text-align: left;
 }
 
 .form-heading h2 {
   margin: 0 0 16px;
-  font-size: clamp(24px, 4vw, 36px);
+  font-size: clamp(28px, 5vw, 40px);
   font-weight: 600;
   letter-spacing: -0.04em;
 }
@@ -122,7 +156,7 @@ textarea {
   margin: 0;
   color: var(--contact-gray);
   font-family: var(--contact-font-ja);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -133,6 +167,12 @@ textarea {
   max-width: 760px;
 }
 
+.contact-form-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 100px auto 0;
+}
+
 .form-group {
   margin-bottom: 40px;
 }
@@ -140,7 +180,7 @@ textarea {
 .form-group label {
   display: block;
   margin-bottom: 14px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
@@ -162,7 +202,7 @@ textarea {
   background: transparent;
   color: var(--contact-black);
   font-family: var(--contact-font-ja);
-  font-size: 14px;
+  font-size: 16px;
   transition: border-color 0.3s ease;
 }
 
@@ -198,9 +238,9 @@ textarea {
 
 
 .form-note {
-  margin: -10px 0 30px;
+  margin: -10px 0 40px;
   color: var(--contact-gray);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* Submit Button */
@@ -216,7 +256,7 @@ textarea {
   background: var(--contact-black);
   color: var(--contact-white);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.08em;
   transition:
@@ -225,7 +265,7 @@ textarea {
 }
 
 .contact-submit span:last-child {
-  font-size: 22px;
+  font-size: 24px;
   transition: transform 0.3s ease;
 }
 
@@ -254,7 +294,7 @@ textarea {
   min-height: 24px;
   margin-top: 24px;
   font-family: var(--contact-font-ja);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -276,7 +316,7 @@ textarea {
 .contact-footer a,
 .contact-footer p {
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
 }
@@ -289,20 +329,58 @@ textarea {
   opacity: 0.5;
 }
 
+/* フォーム送信確認：成功メッセージ */
+#form-status.is-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 32px 24px;
+  border: 1px solid #222;
+  text-align: center;
+}
+
+/* チェックマーク */
+.form-status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #222;
+  border-radius: 50%;
+  font-size: 26px;
+}
+
+/* 見出し */
+.form-status-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* 説明文 */
+.form-status-message {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+}
+
 /* Responsive */
 
-@media (max-width: 768px) {
-  .contact-header {
-    padding: 22px 5%;
+@media (max-width: 767px) {
+  .contact-divider {
+    margin: 56px auto;
   }
 
   .contact-main {
     width: 90%;
-    padding: 75px 0 90px;
+    padding: 70px 0 40px;
   }
 
   .contact-intro {
-    margin-bottom: 85px;
+    margin-bottom: 70px;
   }
 
   .section-label {
@@ -316,6 +394,14 @@ textarea {
   .contact-description {
     margin-top: 35px;
     font-size: 13px;
+  }
+
+  .contact-divider {
+    margin: 56px auto;
+  }
+
+  .contact-form-section {
+    margin: 60px auto 0;
   }
 
   .form-heading {
@@ -360,7 +446,7 @@ textarea {
   }
 
   .contact-footer p {
-    margin:0 auto;
+    margin: 0 auto;
     margin-top: 8px;
   }
 
@@ -386,5 +472,10 @@ textarea {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .contact-divider span {
+    animation: none;
+    transform: scaleX(1);
   }
 }

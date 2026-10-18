@@ -44,7 +44,7 @@ img {
 
 .section-label {
   font-family: "Manrope", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
@@ -207,6 +207,7 @@ p {
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.05em;
+  margin-bottom: 5px;
 }
 
 /* MENU LINK HOVER */
@@ -284,7 +285,7 @@ p {
 
 .hero {
   min-height: 100vh;
-  padding: 160px 40px 80px;
+  padding: 160px 40px 50px;
 
   display: flex;
   align-items: center;
@@ -364,13 +365,98 @@ p {
   margin-left: 5vw;
 }
 
+/* Hero Scroll Indicator */
 .hero-scroll {
   margin-top: 80px;
 
   font-family: "Manrope", sans-serif;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: scrollHint 2s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-scroll-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.hero-scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 32px;
+  background-color: currentColor;
+  transform-origin: top;
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+.hero-scroll-arrow {
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translate(-3px, -3px);
+  animation: scrollArrow 2s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0.3);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0.3);
+    opacity: 0.3;
+  }
+}
+
+@keyframes scrollArrow {
+
+  0%,
+  100% {
+    transform: rotate(45deg) translate(-3px, -3px);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: rotate(45deg) translate(1px, 1px);
+    opacity: 1;
+  }
+}
+
+@keyframes scrollHint {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
 }
 
 /* ==============================
@@ -623,7 +709,7 @@ p {
   grid-column: 1;
 
   color: #666666;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .work-view {
@@ -775,7 +861,7 @@ p {
 ============================== */
 
 .contact {
-  padding: 180px 40px;
+  padding: 150px 40px 100px;
 
   background-color: #F7F7F5;
   color: #111111;
@@ -813,7 +899,7 @@ p {
   margin-top: 80px;
 
   font-family: "Manrope", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.1em;
 }
@@ -827,7 +913,7 @@ p {
 ============================== */
 
 .footer {
-  padding: 60px 40px 30px;
+  padding: 30px 40px;
 
   background-color: #111111;
   color: #F7F7F5;
@@ -859,6 +945,7 @@ p {
   letter-spacing: 0.12em;
 }
 
+/* Footer Navigation Icons */
 .footer-nav {
   display: flex;
   gap: 30px;
@@ -866,9 +953,46 @@ p {
 
 .footer-nav a {
   font-family: "Manrope", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.footer-nav-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Hover Interaction */
+.footer-nav a .footer-nav-icon {
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.footer-nav a:hover .footer-nav-icon {
+  transform: translateY(-2px);
+  opacity: 0.7;
+}
+
+/* Keyboard Accessibility */
+.footer-nav a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
 }
 
 .footer-bottom {
@@ -965,6 +1089,11 @@ p {
     padding: 50px 24px 24px;
   }
 
+
+  .footer-nav a {
+    font-size: 12px;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -977,6 +1106,10 @@ p {
     font-size: 22px;
   }
 
+  .menu a {
+    margin: 10px 0;
+  }
+
   .menu-close {
     top: 26px;
     right: 17px;
@@ -985,8 +1118,9 @@ p {
   }
 
   .hero {
-    min-height: 100svh;
-    padding: 120px 20px 40px;
+    min-height: auto;
+    height: auto;
+    padding: 180px 20px 50px;
   }
 
   .hero-label {
@@ -1011,9 +1145,13 @@ p {
     margin-top: 60px;
   }
 
+  .hero-scroll-text {
+    font-size: 10px;
+  }
+
   .about {
     gap: 40px;
-    padding: 100px 20px;
+    padding: 50px 20px;
   }
 
   .about-title {
@@ -1031,7 +1169,7 @@ p {
   }
 
   .skills {
-    padding: 100px 20px;
+    padding: 50px 20px;
   }
 
   .skills-header {
@@ -1057,7 +1195,7 @@ p {
   }
 
   .works {
-    padding: 100px 20px;
+    padding: 50px 20px;
   }
 
   .works-header {
@@ -1101,7 +1239,7 @@ p {
   }
 
   .service {
-    padding: 100px 20px;
+    padding: 50px 20px 80px;
   }
 
   .service-header {
@@ -1134,7 +1272,7 @@ p {
   }
 
   .contact {
-    padding: 100px 20px;
+    padding: 50px 20px 0px;
   }
 
   .contact-title {
@@ -1143,20 +1281,20 @@ p {
   }
 
   .contact-link {
-    margin-top: 60px;
+    margin-top: 35px;
   }
 
   .footer {
-    padding: 40px 20px 20px;
+    padding: 50px 20px 20px;
   }
 
   .footer-content {
     display: block;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
   }
 
   .footer-nav {
-    margin-top: 40px;
+    margin-top: 30px;
     gap: 20px;
   }
 
@@ -1211,6 +1349,12 @@ p {
 
   .menu {
     transition: none;
+  }
+
+  .hero-scroll,
+  .hero-scroll-line,
+  .hero-scroll-arrow {
+    animation: none;
   }
 
   .about-image img {

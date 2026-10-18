@@ -50,8 +50,18 @@ contactForm.addEventListener("submit", (event) => {
 
   // 送信処理は未実装
   submitButton.disabled = true;
-  formStatus.textContent =
-    "入力内容を確認しました。現在、メール送信機能は準備中です。";
+  formStatus.innerHTML = `
+  <span class="form-status-icon" aria-hidden="true">✓</span>
+  <span class="form-status-title">入力内容の確認が完了しました</span>
+  <span class="form-status-message">
+    お問い合わせ内容を確認しました。<br>
+    現在、メール送信機能は準備中です。
+  </span>
+`;
+
+  formStatus.classList.add("is-success");
+  formStatus.setAttribute("role", "status");
+  formStatus.setAttribute("aria-live", "polite");
 
   console.log({
     name,
