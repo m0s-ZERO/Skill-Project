@@ -120,3 +120,61 @@ const finalWorks = works
 
 console.log("最終結果：");
 console.log(finalWorks);
+
+// # Day87
+function greet(name) {
+  return "Hello, " + name;
+}
+console.log(greet("m0s"));
+console.log(greet("Ray"));
+
+// 課題：作品の価格を表示する関数
+// 次の条件を満たす関数を作成してね。
+// - 関数名は getWorkPrice
+// - 引数で作品オブジェクト work を受け取る
+// - work.price を return する
+// - works[0] を渡して、結果を console.log() で表示する
+function getWorkPrice(work) {
+  return work.price;
+}
+console.log(getWorkPrice(works[0]));
+
+// 課題は「指定したカテゴリーの作品だけを取得する関数」を作ること。
+// - 関数名：getWorksByCategory
+// - 引数：作品の配列 works と、取得したいカテゴリー category
+// - 処理：指定カテゴリーと一致する作品だけを返す
+// - 使用するメソッド：filter()
+function getWorksByCategory(works, category) {
+  // ここに処理を書く
+  return works.filter(work => work.category === category);
+}
+console.log(getWorksByCategory(works, "Web Site"));
+
+// 課題：指定カテゴリーの作品を、価格の高い順に取得する関数を作る。
+// 条件は3つ。
+// 1. 関数名は getSortedWorksByCategory
+// 2. 引数は works と category
+// 3. 指定カテゴリーの作品を抽出し、価格の降順に並べて返す
+function getSortedWorksByCategory(works, category) {
+  // ① filter() でカテゴリーを絞り込む
+  const filteredWorks = works.filter(work => work.category === category);
+  // ② sort() で価格の高い順に並べる
+  return filteredWorks.sort((a, b) => b.price - a.price);
+}
+console.log(getSortedWorksByCategory(works, "Web Site"));
+
+// 課題：キーワードとカテゴリーの両方で作品を検索し、価格の高い順に返す関数を作る。
+// 条件は次の4つ。
+// 1. 関数名：searchWorks
+// 2. 引数：works、keyword、category
+// 3. 作品タイトルにキーワードが含まれ、かつカテゴリーが一致する作品だけを抽出する
+// 4. 価格の高い順に並べて返す
+function searchWorks(works, keyword, category) {
+  // ① filter() でキーワードとカテゴリーを絞り込む
+  const filteredWorks = works.filter(work => {
+    return work.title.includes(keyword) && work.category === category;
+  });
+  // ② sort() で価格の高い順に並べる
+  return filteredWorks.sort((a, b) => b.price - a.price);
+}
+console.log(searchWorks(works, "m0s", "Web Site"));
