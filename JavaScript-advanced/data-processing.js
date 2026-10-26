@@ -68,3 +68,55 @@ const sortedHighPriceWorks = [...works].sort((a, b) => {
 });
 console.log("価格の高い順に並べた作品一覧");
 console.log(sortedHighPriceWorks);
+
+
+// # Day86
+// Web Appだけを抽出して、価格の高い順に並べる
+const filteredAndSortedWorks = works
+  .filter(work => work.category === "Web Site")
+  .sort((a, b) => b.price - a.price);
+console.log("Web Siteの価格が高い順");
+console.log(filteredAndSortedWorks);
+
+// キーワードで作品を検索する
+const keyword = "m0s";
+const searchedWorks = works.filter(work => {
+  return work.title.includes(keyword);
+});
+console.log("検索キーワード：" + keyword);
+console.log("検索結果：");
+console.log(searchedWorks);
+
+// キーワードとカテゴリーで作品を絞り込む
+const searchKeyword = "m0s";
+const selectedCategory = "Web Site";
+
+const filteredWorks = works.filter(work => {
+  return (
+    work.title.includes(searchKeyword) &&
+    work.category === selectedCategory
+  );
+});
+console.log("キーワード：" + searchKeyword);
+console.log("カテゴリー：" + selectedCategory);
+console.log("絞り込み結果：");
+console.log(filteredWorks);
+
+// 課題
+// 次の3つの処理を順番に実行する。
+// 1. 検索： タイトルにキーワードが含まれる作品を抽出する
+// 2. 絞り込み： 指定したカテゴリーの作品だけを残す
+// 3. 並び替え： 価格の高い順に並べる
+// 実装条件
+// - 検索キーワード："m0s"
+// - カテゴリー："Web Site"
+// - 価格：高い順
+// - 結果を finalWorks という変数に格納する
+// - 最後に console.log(finalWorks) で表示する
+const finalWorks = works
+  .filter(work => work.title.includes("m0s"))
+  .filter(work => work.category === "Web Site")
+  .sort((a, b) => b.price - a.price);
+
+console.log("最終結果：");
+console.log(finalWorks);
