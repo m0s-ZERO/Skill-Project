@@ -178,3 +178,133 @@ function searchWorks(works, keyword, category) {
   return filteredWorks.sort((a, b) => b.price - a.price);
 }
 console.log(searchWorks(works, "m0s", "Web Site"));
+
+// # Day88
+console.log(works.length);
+// 今回の課題は、次の3つ。
+// 1. filter() を使って、カテゴリーが "Web Site" の作品だけを抽出する。
+// 2. 抽出した配列の件数を length で取得する。
+// 3. 結果を console.log() で表示する。
+const webSiteWorks = works.filter(work => {
+  return work.category === "Web Site";
+});
+// ここで件数を取得して表示する
+console.log(webSiteWorks.length);
+
+// 課題②：全作品の合計価格を求める
+// 次の条件でコードを書いてみよう。
+// 1. works 配列の価格を reduce() で合計する。
+// 2. 合計値を totalPrice という変数に保存する。
+// 3. console.log(totalPrice) で表示する。
+const totalPrice = works.reduce((total, work) => {
+  // total に work.price を加算する
+  return total + work.price;
+}, 0);
+console.log(totalPrice);
+
+// 課題③：全作品の平均価格を求める
+// 条件は3つ。
+// 1. reduce() で全作品の合計価格を求める。
+// 2. works.length で作品数を取得する。
+// 3. 合計価格を作品数で割って、平均価格を表示する。
+const averagePrice = totalPrice / works.length;
+console.log(averagePrice);
+
+// 課題④：Web Site作品の合計価格を求める
+// 条件は次の3つ。
+// 1. works から "Web Site" の作品だけを抽出する。
+// 2. 抽出した作品の価格を reduce() で合計する。
+// 3. 結果を webSiteTotalPrice という変数に保存して表示する。
+const webSiteTotalPrice = works
+  .filter(work => work.category === "Web Site")
+  .reduce((total, work) => {
+    return total + work.price;
+  }, 0);
+console.log(webSiteTotalPrice);
+
+// 課題⑤：カテゴリー別の作品数を数える
+// 次の条件でコードを書いてみて。
+// - 変数名：categoryCounts
+// - works.reduce() を使用する
+// - カテゴリーごとの作品数をオブジェクトに保存する
+// - 最後に console.log(categoryCounts) で表示する
+const categoryCounts = works.reduce((counts, work) => {
+  // 作品のカテゴリーを取得する
+  const category = work.category;
+  // もし counts に category が存在しなければ、初期値として0を設定する
+  if (!counts[category]) {
+    counts[category] = 0;
+  }
+  // そのカテゴリーの件数を1増やす
+  counts[category]++;
+  return counts;
+}, {});
+console.log(categoryCounts);
+
+// 課題⑥
+// 次の条件でコードを書いてみて。
+// - 変数名：categoryTotals
+// - works.reduce() を使用する
+// - カテゴリーごとの価格をオブジェクトに保存する
+// - 最後に console.log(categoryTotals) で表示する
+const categoryTotals = works.reduce((totals, work) => {
+  const category = work.category;
+  if (!totals[category]) {
+    totals[category] = 0;
+  }
+  totals[category] += work.price;
+  return totals;
+}, {});
+console.log(categoryTotals);
+
+// 課題⑦：カテゴリー別の合計価格を返す関数
+// 次の条件で作ってみて。
+// - 関数名：getCategoryTotals
+// - 引数：works
+// - 戻り値：カテゴリー別の合計価格をまとめたオブジェクト
+// - 呼び出した結果を console.log() で表示する
+function getCategoryTotals(works) {
+  return works.reduce((totals, work) => {
+    const category = work.category;
+    if (!totals[category]) {
+      totals[category] = 0;
+    }
+    totals[category] += work.price;
+    return totals;
+  }, {});
+}
+console.log(getCategoryTotals(works));
+
+// 課題⑧：カテゴリー別の分析結果を作る
+// 新しい関数 analyzeWorks を作って、次の情報をひとつのオブジェクトとして返してみて。
+// 1. 全作品数：totalCount
+// 2. 全作品の合計価格：totalPrice
+// 3. カテゴリー別の作品数：categoryCounts
+// 4. カテゴリー別の合計価格：categoryTotals
+function analyzeWorks(works) {
+  const totalCount = works.length;
+  const totalPrice = works.reduce((total, work) => total + work.price, 0);
+  const categoryCounts = works.reduce((counts, work) => {
+    const category = work.category;
+    if (!counts[category]) {
+      counts[category] = 0;
+    }
+    counts[category]++;
+    return counts;
+  }, {});
+  const categoryTotals = works.reduce((totals, work) => {
+    const category = work.category;
+    if (!totals[category]) {
+      totals[category] = 0;
+    }
+    totals[category] += work.price;
+    return totals;
+  }, {});
+  return {
+    totalCount,
+    totalPrice,
+    categoryCounts,
+    categoryTotals
+  };
+}
+console.log(analyzeWorks(works));
