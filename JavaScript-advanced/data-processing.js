@@ -308,3 +308,58 @@ function analyzeWorks(works) {
   };
 }
 console.log(analyzeWorks(works));
+
+// # Day89
+// 課題①：作品検索関数
+// 次の条件で関数を作ってね。
+// - 関数名：searchAndSortWorks
+// - 引数：works、keyword、category
+// - 作品タイトルにキーワードが含まれる
+// - カテゴリーが指定値と一致する
+// - 価格の高い順に並べ替えて返す
+function searchAndSortWorks(works, keyword, category) {
+  return works
+    .filter(work => work.title.includes(keyword) && work.category === category)
+    .sort((a, b) => b.price - a.price);
+}
+console.log(searchAndSortWorks(works, "m0s", "Web Site"));
+
+// 課題②：検索結果の分析関数
+// 関数名は analyzeSearchResults にしよう。
+// 条件は次のとおり。
+// 1. 引数は works、keyword、category
+// 2. searchAndSortWorks() を呼び出して検索結果を取得する
+// 3. 検索結果の件数を resultCount に保存する
+// 4. 検索結果の合計価格を resultTotalPrice に保存する
+// 5. この3つの情報をオブジェクトで返す
+function analyzeSearchResults(works, keyword, category) {
+  const searchResults = searchAndSortWorks(works, keyword, category);
+  const resultCount = searchResults.length;
+  const resultTotalPrice = searchResults.reduce((total, work) => total + work.price, 0);
+  return {
+    resultCount,
+    resultTotalPrice,
+    searchResults
+  };
+}
+console.log(analyzeSearchResults(works, "m0s", "Web Site"));
+
+// 実装する内容
+// 1. resultTotalPrice と resultCount を使って平均価格を計算する。
+// 2. 検索結果が0件の場合、ゼロ除算を避けて平均価格を 0 にする。
+// 3. 戻り値のオブジェクトに resultAveragePrice を追加する。
+function analyzeSearchResults(works, keyword, category) {
+  const searchResults = searchAndSortWorks(works, keyword, category);
+  const resultCount = searchResults.length;
+  const resultTotalPrice = searchResults.reduce((total, work) => total + work.price, 0);
+  const resultAveragePrice =
+  resultCount === 0 ? 0 : resultTotalPrice / resultCount;
+  return {
+    resultCount,
+    resultTotalPrice,
+    searchResults,
+    resultAveragePrice
+  };
+}
+console.log(analyzeSearchResults(works, "m0s", "Web Site"));
+
