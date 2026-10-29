@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Analysis App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Work Analysis</h1>
+    <p>作品データを検索・分析するアプリ</p>
+  </header>
+
+  <main class="container">
+    <section class="search-section">
+      <h2>作品を検索する</h2>
+
+      <label for="keyword">キーワード</label>
+      <input
+        type="text"
+        id="keyword"
+        placeholder="作品名を入力"
+      >
+
+      <label for="category">カテゴリー</label>
+      <select id="category">
+        <option value="all">すべて</option>
+        <option value="Web Site">Web Site</option>
+        <option value="Web App">Web App</option>
+      </select>
+
+      <button id="search-button" type="button">
+        検索する
+      </button>
+    </section>
+
+    <section class="summary-section">
+      <h2>集計結果</h2>
+      <p>作品数：<span id="result-count">0</span></p>
+      <p>合計価格：<span id="result-total">0</span>円</p>
+      <p>平均価格：<span id="result-average">0</span>円</p>
+    </section>
+
+    <section class="results-section">
+      <h2>作品一覧</h2>
+      <div id="work-list"></div>
+    </section>
+  </main>
+</body>
+</html>
