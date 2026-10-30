@@ -90,9 +90,25 @@ h2 {
 }
 
 .work-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   padding: 16px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
+}
+
+.work-card-image {
+  display: block;
+  flex: 0 0 200px;
+  width: 200px;
+  height: 125px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.work-card-details {
+  min-width: 0;
 }
 
 .work-card h3 {
@@ -126,5 +142,16 @@ h2 {
   .summary-section,
   .results-section {
     padding: 18px;
+  }
+
+  .work-card {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .work-card-image {
+    flex-basis: 120px;
+    width: 120px;
+    height: 90px;
   }
 }

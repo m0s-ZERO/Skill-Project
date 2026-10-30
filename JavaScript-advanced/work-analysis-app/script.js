@@ -1,13 +1,43 @@
 
 const works = [
-  { id: 1, title: "m0s Hair", category: "Web Site", price: 50000 },
-  { id: 2, title: "m0s MOVIE", category: "Web Site", price: 50000 },
-  { id: 3, title: "m0s Table", category: "Web Site", price: 35000 },
-  { id: 4, title: "Weather App", category: "Web App", price: 20000 },
-  { id: 5, title: "Idea Vault", category: "Web App", price: 10000 }
+  {
+    id: 1,
+    title: "m0s Hair",
+    category: "Web Site",
+    price: 50000,
+    image: "images/m0s-hairのコピー.png"
+  },
+  {
+    id: 2,
+    title: "m0s MOVIE",
+    category: "Web Site",
+    price: 50000,
+    image: "images/m0s-movieのコピー.png"
+  },
+  {
+    id: 3,
+    title: "m0s Table",
+    category: "Web Site",
+    price: 35000,
+    image: "images/m0s-tableのコピー.png"
+  },
+  {
+    id: 4,
+    title: "Weather App",
+    category: "Web App",
+    price: 20000,
+    image: "images/weather-appのコピー.png"
+  },
+  {
+    id: 5,
+    title: "Idea Vault",
+    category: "Web App",
+    price: 10000,
+    image: "images/idea-vaultのコピー.png"
+  }
 ];
 
-function searchWorks(works, keyword, category) {
+function searchWorks(works, keyword, category, minPrice, maxPrice, sortOrder) {
   return works
     .filter(work => {
       const matchesKeyword = work.title
@@ -17,9 +47,26 @@ function searchWorks(works, keyword, category) {
       const matchesCategory =
         category === "all" || work.category === category;
 
-      return matchesKeyword && matchesCategory;
+      const matchesMinPrice =
+        minPrice === "" || work.price >= Number(minPrice);
+
+      const matchesMaxPrice =
+        maxPrice === "" || work.price <= Number(maxPrice);
+
+      return (
+        matchesKeyword &&
+        matchesCategory &&
+        matchesMinPrice &&
+        matchesMaxPrice
+      );
     })
-    .sort((a, b) => b.price - a.price);
+    .sort((a, b) => {
+      if (sortOrder === "low") {
+        return a.price - b.price;
+      }
+
+      return b.price - a.price;
+    });
 }
 
 function analyzeWorks(works) {
@@ -43,11 +90,16 @@ function analyzeWorks(works) {
 console.log(searchWorks(works, "m0s", "Web Site"));
 console.log(analyzeWorks(works));
 
-
-
 const keywordInput = document.querySelector("#keyword");
 const categorySelect = document.querySelector("#category");
+
+const minPriceInput = document.querySelector("#min-price");
+const maxPriceInput = document.querySelector("#max-price");
+
+const sortOrderSelect = document.querySelector("#sort-order");
+
 const searchButton = document.querySelector("#search-button");
+const resetButton = document.querySelector("#reset-button");
 
 const resultCountElement = document.querySelector("#result-count");
 const resultTotalElement = document.querySelector("#result-total");
@@ -69,6 +121,15 @@ function displayWorks(works) {
     const card = document.createElement("article");
     card.className = "work-card";
 
+    const image = document.createElement("img");
+    image.className = "work-card-image";
+    image.src = work.image;
+    image.alt = `${work.title}の画面`;
+    image.loading = "lazy";
+
+    const details = document.createElement("div");
+    details.className = "work-card-details";
+
     const title = document.createElement("h3");
     title.textContent = work.title;
 
@@ -78,7 +139,8 @@ function displayWorks(works) {
     const price = document.createElement("p");
     price.textContent = `価格：${work.price.toLocaleString("ja-JP")}円`;
 
-    card.append(title, category, price);
+    details.append(title, category, price);
+    card.append(image, details);
     workListElement.appendChild(card);
   });
 }
@@ -86,8 +148,19 @@ function displayWorks(works) {
 function runSearch() {
   const keyword = keywordInput.value.trim();
   const category = categorySelect.value;
+  const minPrice = minPriceInput.value;
+  const maxPrice = maxPriceInput.value;
+  const sortOrder = sortOrderSelect.value;
 
-  const searchResults = searchWorks(works, keyword, category);
+  const searchResults = searchWorks(
+    works,
+    keyword,
+    category,
+    minPrice,
+    maxPrice,
+    sortOrder
+  );
+
   const analysis = analyzeWorks(searchResults);
 
   resultCountElement.textContent = analysis.resultCount;
@@ -99,6 +172,17 @@ function runSearch() {
   displayWorks(searchResults);
 }
 
+function resetSearch() {
+  keywordInput.value = "";
+  categorySelect.value = "all";
+  minPriceInput.value = "";
+  maxPriceInput.value = "";
+  sortOrderSelect.value = "high";
+
+  runSearch();
+}
+
 searchButton.addEventListener("click", runSearch);
+resetButton.addEventListener("click", resetSearch);
 
 runSearch();

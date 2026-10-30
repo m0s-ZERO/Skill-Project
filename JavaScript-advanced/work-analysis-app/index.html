@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <header class="header">
     <h1>Work Analysis</h1>
@@ -19,11 +20,7 @@
       <h2>作品を検索する</h2>
 
       <label for="keyword">キーワード</label>
-      <input
-        type="text"
-        id="keyword"
-        placeholder="作品名を入力"
-      >
+      <input type="text" id="keyword" placeholder="作品名を入力">
 
       <label for="category">カテゴリー</label>
       <select id="category">
@@ -32,10 +29,27 @@
         <option value="Web App">Web App</option>
       </select>
 
+      <label for="min-price">最低価格</label>
+      <input type="number" id="min-price" placeholder="最低価格を入力" min="0">
+
+      <label for="max-price">最高価格</label>
+      <input type="number" id="max-price" placeholder="最高価格を入力" min="0">
+
+      <label for="sort-order">並び替え</label>
+      <select id="sort-order">
+        <option value="high">価格が高い順</option>
+        <option value="low">価格が安い順</option>
+      </select>
+
       <button id="search-button" type="button">
         検索する
       </button>
+
+      <button id="reset-button" type="button">
+        条件をリセット
+      </button>
     </section>
+
 
     <section class="summary-section">
       <h2>集計結果</h2>
@@ -50,4 +64,5 @@
     </section>
   </main>
 </body>
+
 </html>
