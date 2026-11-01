@@ -87,9 +87,6 @@ function analyzeWorks(works) {
   };
 }
 
-console.log(searchWorks(works, "m0s", "Web Site"));
-console.log(analyzeWorks(works));
-
 const keywordInput = document.querySelector("#keyword");
 const categorySelect = document.querySelector("#category");
 
@@ -98,12 +95,14 @@ const maxPriceInput = document.querySelector("#max-price");
 
 const sortOrderSelect = document.querySelector("#sort-order");
 
+const searchErrorElement = document.querySelector("#search-error");
 const searchButton = document.querySelector("#search-button");
 const resetButton = document.querySelector("#reset-button");
 
 const resultCountElement = document.querySelector("#result-count");
 const resultTotalElement = document.querySelector("#result-total");
 const resultAverageElement = document.querySelector("#result-average");
+const resultsCountElement = document.querySelector("#results-count");
 const workListElement = document.querySelector("#work-list");
 
 function displayWorks(works) {
@@ -126,6 +125,11 @@ function displayWorks(works) {
     image.src = work.image;
     image.alt = `${work.title}の画面`;
     image.loading = "lazy";
+
+    image.addEventListener("error", () => {
+      image.alt = `${work.title}の画像を読み込めませんでした`;
+      image.classList.add("image-error");
+    });
 
     const details = document.createElement("div");
     details.className = "work-card-details";
@@ -151,6 +155,31 @@ function runSearch() {
   const minPrice = minPriceInput.value;
   const maxPrice = maxPriceInput.value;
   const sortOrder = sortOrderSelect.value;
+  // エラー表示を初期化
+  searchErrorElement.textContent = "";
+
+  // 価格の入力チェック
+  if (
+    (minPrice !== "" &&
+      (!Number.isFinite(Number(minPrice)) || Number(minPrice) < 0)) ||
+    (maxPrice !== "" &&
+      (!Number.isFinite(Number(maxPrice)) || Number(maxPrice) < 0))
+  ) {
+    searchErrorElement.textContent =
+      "価格は0以上の数値で入力してください。";
+    return;
+  }
+
+  // 最低価格と最高価格の比較
+  if (
+    minPrice !== "" &&
+    maxPrice !== "" &&
+    Number(minPrice) > Number(maxPrice)
+  ) {
+    searchErrorElement.textContent =
+      "最低価格は最高価格以下に設定してください。";
+    return;
+  }
 
   const searchResults = searchWorks(
     works,
@@ -168,6 +197,8 @@ function runSearch() {
     analysis.resultTotalPrice.toLocaleString("ja-JP");
   resultAverageElement.textContent =
     Math.round(analysis.resultAveragePrice).toLocaleString("ja-JP");
+  resultsCountElement.textContent =
+    `全${analysis.resultCount}件`;
 
   displayWorks(searchResults);
 }
