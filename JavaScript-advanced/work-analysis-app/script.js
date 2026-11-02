@@ -87,6 +87,38 @@ function analyzeWorks(works) {
   };
 }
 
+function saveWorks() {
+  // works配列をJSON文字列に変換
+  const worksData = JSON.stringify(works);
+
+  // localStorageに保存
+  localStorage.setItem("works", worksData);
+}
+
+
+function loadWorks() {
+  // localStorageから保存データを取得
+  const savedData = localStorage.getItem("works");
+
+  // 保存データが存在しない場合は初期データを使用
+  if (savedData === null) {
+    return;
+  }
+
+  try {
+    // JSON文字列をJavaScriptの配列に変換
+    const parsedData = JSON.parse(savedData);
+
+    // 配列であることを確認
+    if (Array.isArray(parsedData)) {
+      works.splice(0, works.length, ...parsedData);
+    }
+  } catch (error) {
+    console.error("作品データの読み込みに失敗しました。", error);
+  }
+}
+
+
 const keywordInput = document.querySelector("#keyword");
 const categorySelect = document.querySelector("#category");
 
@@ -285,8 +317,6 @@ function editWork(id) {
   });
 }
 
-
-
 function addWork(event) {
   event.preventDefault();
 
@@ -343,6 +373,9 @@ function addWork(event) {
   // フォームをリセット
   workForm.reset();
 
+  // 作品データを保存
+  saveWorks();
+
   // 画面を更新
   runSearch();
 
@@ -389,6 +422,9 @@ function deleteWork(id) {
     cancelEdit();
   }
 
+  // 削除したデータを保存
+  saveWorks();
+
   // 画面を更新
   runSearch();
 }
@@ -404,4 +440,5 @@ closePopupButton.addEventListener("click", () => {
   successPopup.classList.remove("show");
 });
 
+loadWorks();
 runSearch();
