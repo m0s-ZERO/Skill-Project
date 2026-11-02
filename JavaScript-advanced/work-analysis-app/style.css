@@ -252,6 +252,217 @@ h2 {
   background: #f3f4f6;
   object-fit: contain;
 }
+
+
+/* Work Management */
+.management-section {
+  background: #ffffff;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.management-section h2 {
+  margin-bottom: 20px;
+}
+
+#work-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#work-form label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+#work-form input,
+#work-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#work-form input:focus,
+#work-form select:focus {
+  outline: 2px solid #2563eb;
+  border-color: #2563eb;
+}
+
+#work-submit-button {
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#work-submit-button:hover {
+  background: #1d4ed8;
+}
+
+#work-submit-button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* Success Popup */
+.success-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.success-popup.show {
+  display: flex;
+}
+
+.success-popup-content {
+  width: 100%;
+  max-width: 360px;
+  padding: 32px 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: popup-appear 0.25s ease;
+}
+
+.success-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.success-popup-content h2 {
+  margin-bottom: 10px;
+}
+
+.success-popup-content p {
+  margin-bottom: 24px;
+  color: #666666;
+}
+
+#close-popup-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#close-popup-button:hover {
+  background: #1d4ed8;
+}
+
+/* Edit Button */
+.edit-button {
+  margin-top: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #e5e7eb;
+  color: #1f2937;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.edit-button:hover {
+  background: #d1d5db;
+}
+
+/* Work Card Actions */
+.card-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.edit-button {
+  margin-top: 0;
+}
+
+/* Cancel Edit Button */
+#cancel-edit-button {
+  display: none;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#cancel-edit-button:hover {
+  background: #e5e7eb;
+}
+
+
+/* Delete Button */
+.delete-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.delete-button:hover {
+  background: #fecaca;
+}
+
+/* Card Actions */
+.card-actions {
+  gap: 8px;
+}
+
+
+@keyframes popup-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 @media (max-width: 600px) {
   .header {
     padding: 24px 16px;
@@ -290,22 +501,43 @@ h2 {
   }
 
   .work-card {
-    gap: 12px;
-    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
   }
 
   .work-card-image {
-    flex: 0 0 110px;
-    width: 110px;
-    height: 90px;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .work-card-details {
+    width: 100%;
+    min-width: 0;
   }
 
   .work-card h3 {
-    font-size: 16px;
-    overflow-wrap: anywhere;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   .work-card p {
-    font-size: 13px;
+    font-size: 14px;
   }
+
+  .card-actions {
+    width: 100%;
+    margin-left: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+  }
+
 }

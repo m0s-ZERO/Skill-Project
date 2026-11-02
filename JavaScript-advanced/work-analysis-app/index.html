@@ -59,6 +59,38 @@
     </section>
 
 
+    <section class="management-section">
+      <h2>作品を管理する</h2>
+
+      <form id="work-form">
+        <label for="work-title">作品名</label>
+        <input type="text" id="work-title" placeholder="例：New Portfolio" required>
+
+        <label for="work-category">カテゴリー</label>
+        <select id="work-category" required>
+          <option value="Web Site">Web Site</option>
+          <option value="Web App">Web App</option>
+        </select>
+
+        <label for="work-price">価格</label>
+        <div class="price-input">
+          <input type="number" id="work-price" placeholder="例：30000" min="0" step="1" required>
+          <span>円</span>
+        </div>
+
+        <label for="work-image">画像パス</label>
+        <input type="text" id="work-image" placeholder="例：images/new-work.png">
+
+        <button type="submit" id="work-submit-button">
+          作品を追加する
+        </button>
+        <button type="button" id="cancel-edit-button">
+          編集をキャンセル
+        </button>
+      </form>
+    </section>
+
+
     <section class="summary-section">
       <h2>集計結果</h2>
 
@@ -98,6 +130,17 @@
       <div id="work-list"></div>
     </section>
   </main>
+
+
+  <div id="success-popup" class="success-popup" role="status" aria-live="polite">
+    <div class="success-popup-content">
+      <div class="success-icon">✓</div>
+      <h2>追加完了！</h2>
+      <p>作品を追加しました。</p>
+      <button type="button" id="close-popup-button">閉じる</button>
+    </div>
+  </div>
+
 </body>
 
 </html>

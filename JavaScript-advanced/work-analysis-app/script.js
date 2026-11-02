@@ -99,11 +99,26 @@ const searchErrorElement = document.querySelector("#search-error");
 const searchButton = document.querySelector("#search-button");
 const resetButton = document.querySelector("#reset-button");
 
+const workSubmitButton = document.querySelector("#work-submit-button");
+const cancelEditButton = document.querySelector("#cancel-edit-button");
+
 const resultCountElement = document.querySelector("#result-count");
 const resultTotalElement = document.querySelector("#result-total");
 const resultAverageElement = document.querySelector("#result-average");
 const resultsCountElement = document.querySelector("#results-count");
 const workListElement = document.querySelector("#work-list");
+
+
+const workForm = document.querySelector("#work-form");
+const workTitleInput = document.querySelector("#work-title");
+const workCategoryInput = document.querySelector("#work-category");
+const workPriceInput = document.querySelector("#work-price");
+const workImageInput = document.querySelector("#work-image");
+
+const successPopup = document.querySelector("#success-popup");
+const closePopupButton = document.querySelector("#close-popup-button");
+
+let editingWorkId = null;
 
 function displayWorks(works) {
   workListElement.replaceChildren();
@@ -140,11 +155,38 @@ function displayWorks(works) {
     const category = document.createElement("p");
     category.textContent = `カテゴリー：${work.category}`;
 
+
     const price = document.createElement("p");
     price.textContent = `価格：${work.price.toLocaleString("ja-JP")}円`;
 
+    // 編集ボタン
+    const editButton = document.createElement("button");
+    editButton.type = "button";
+    editButton.className = "edit-button";
+    editButton.textContent = "編集";
+    editButton.addEventListener("click", () => {
+      editWork(work.id);
+    });
+
     details.append(title, category, price);
-    card.append(image, details);
+
+    const cardActions = document.createElement("div");
+    cardActions.className = "card-actions";
+    cardActions.appendChild(editButton);
+    // 削除ボタン
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "delete-button";
+    deleteButton.textContent = "削除";
+
+    deleteButton.addEventListener("click", () => {
+      deleteWork(work.id);
+    });
+
+    cardActions.appendChild(deleteButton);
+
+    card.append(image, details, cardActions);
+
     workListElement.appendChild(card);
   });
 }
@@ -213,7 +255,153 @@ function resetSearch() {
   runSearch();
 }
 
+
+function editWork(id) {
+  // IDから対象の作品を取得
+  const targetWork = works.find(work => work.id === id);
+
+  // 対象が存在しない場合は終了
+  if (!targetWork) {
+    return;
+  }
+
+  // 編集中の作品IDを保存
+  editingWorkId = id;
+
+  // 作品情報をフォームに反映
+  workTitleInput.value = targetWork.title;
+  workCategoryInput.value = targetWork.category;
+  workPriceInput.value = targetWork.price;
+  workImageInput.value = targetWork.image;
+
+  // ボタンの表示を変更
+  workSubmitButton.textContent = "変更を保存する";
+  cancelEditButton.style.display = "block";
+
+  // フォームまでスクロール
+  workForm.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+
+
+function addWork(event) {
+  event.preventDefault();
+
+  const title = workTitleInput.value.trim();
+  const category = workCategoryInput.value;
+  const price = workPriceInput.value;
+  const image = workImageInput.value.trim();
+
+  // 入力チェック
+  if (title === "") {
+    alert("作品名を入力してください。");
+    return;
+  }
+
+  if (
+    price === "" ||
+    !Number.isFinite(Number(price)) ||
+    Number(price) < 0
+  ) {
+    alert("価格は0以上の数値を入力してください。");
+    return;
+  }
+
+  // 編集モード
+  if (editingWorkId !== null) {
+    const targetWork = works.find(work => work.id === editingWorkId);
+
+    if (!targetWork) {
+      return;
+    }
+
+    targetWork.title = title;
+    targetWork.category = category;
+    targetWork.price = Number(price);
+    targetWork.image = image;
+
+    editingWorkId = null;
+
+    workSubmitButton.textContent = "作品を追加する";
+    cancelEditButton.style.display = "none";
+  } else {
+    // 追加モード
+    const newWork = {
+      id: Math.max(0, ...works.map(work => work.id)) + 1,
+      title: title,
+      category: category,
+      price: Number(price),
+      image: image
+    };
+
+    works.push(newWork);
+  }
+
+  // フォームをリセット
+  workForm.reset();
+
+  // 画面を更新
+  runSearch();
+
+  // 完了ポップアップを表示
+  successPopup.classList.add("show");
+}
+
+function cancelEdit() {
+  editingWorkId = null;
+
+  workForm.reset();
+
+  workSubmitButton.textContent = "作品を追加する";
+  cancelEditButton.style.display = "none";
+}
+
+
+function deleteWork(id) {
+  // 削除対象の作品を取得
+  const targetWork = works.find(work => work.id === id);
+
+  if (!targetWork) {
+    return;
+  }
+
+  // 削除確認
+  const confirmed = confirm(
+    `「${targetWork.title}」を削除しますか？`
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  // 対象の作品を配列から削除
+  const targetIndex = works.findIndex(work => work.id === id);
+
+  if (targetIndex !== -1) {
+    works.splice(targetIndex, 1);
+  }
+
+  // 編集中の作品が削除された場合は編集を解除
+  if (editingWorkId === id) {
+    cancelEdit();
+  }
+
+  // 画面を更新
+  runSearch();
+}
+
+
+cancelEditButton.addEventListener("click", cancelEdit);
+
+
 searchButton.addEventListener("click", runSearch);
 resetButton.addEventListener("click", resetSearch);
+workForm.addEventListener("submit", addWork);
+closePopupButton.addEventListener("click", () => {
+  successPopup.classList.remove("show");
+});
 
 runSearch();
