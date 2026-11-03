@@ -449,6 +449,41 @@ h2 {
   gap: 8px;
 }
 
+/* Data Management */
+.data-management {
+  margin-top: 30px;
+  padding: 24px;
+  background: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+}
+
+.data-management h2 {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.data-management-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.data-management-buttons button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.data-management-buttons button:hover {
+  opacity: 0.75;
+}
+
 
 @keyframes popup-appear {
   from {
@@ -538,6 +573,14 @@ h2 {
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
+  }
+
+  .data-management-buttons {
+    flex-direction: column;
+  }
+
+  .data-management-buttons button {
+    width: 100%;
   }
 
 }

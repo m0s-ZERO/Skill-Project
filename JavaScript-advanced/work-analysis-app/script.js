@@ -95,6 +95,91 @@ function saveWorks() {
   localStorage.setItem("works", worksData);
 }
 
+function exportWorks() {
+  const jsonData = JSON.stringify(works, null, 2);
+
+  const blob = new Blob([jsonData], {
+    type: "application/json"
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "works-backup.json";
+
+  link.click();
+
+  URL.revokeObjectURL(url);
+}
+
+function importWorks(event) {
+  const file = event.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function () {
+    try {
+      const parsedData = JSON.parse(reader.result);
+
+      if (!Array.isArray(parsedData)) {
+        throw new Error("データ形式が正しくありません。");
+      }
+
+      const isValid = parsedData.every(work =>
+        Number.isInteger(work.id) &&
+        typeof work.title === "string" &&
+        ["Web Site", "Web App"].includes(work.category) &&
+        typeof work.price === "number" &&
+        Number.isFinite(work.price) &&
+        work.price >= 0 &&
+        typeof work.image === "string"
+      );
+
+      if (!isValid) {
+        throw new Error("作品データの内容が正しくありません。");
+      }
+
+      const hasDuplicateIds =
+        new Set(parsedData.map(work => work.id)).size !== parsedData.length;
+
+      if (hasDuplicateIds) {
+        throw new Error("作品IDが重複しています。");
+      }
+
+      const shouldImport = confirm(
+        "現在の作品データを読み込んだデータに置き換えます。よろしいですか？"
+      );
+
+      if (!shouldImport) {
+        return;
+      }
+
+      works.splice(0, works.length, ...parsedData);
+
+      saveWorks();
+      runSearch();
+
+      alert("作品データを読み込みました。");
+
+    } catch (error) {
+      alert("読み込みに失敗しました。\n" + error.message);
+    } finally {
+      importFileInput.value = "";
+    }
+  };
+
+  reader.onerror = function () {
+    alert("ファイルの読み込みに失敗しました。");
+    importFileInput.value = "";
+  };
+
+  reader.readAsText(file);
+}
 
 function loadWorks() {
   // localStorageから保存データを取得
@@ -134,12 +219,15 @@ const resetButton = document.querySelector("#reset-button");
 const workSubmitButton = document.querySelector("#work-submit-button");
 const cancelEditButton = document.querySelector("#cancel-edit-button");
 
+const exportButton = document.querySelector("#export-button");
+const importButton = document.querySelector("#import-button");
+const importFileInput = document.querySelector("#import-file");
+
 const resultCountElement = document.querySelector("#result-count");
 const resultTotalElement = document.querySelector("#result-total");
 const resultAverageElement = document.querySelector("#result-average");
 const resultsCountElement = document.querySelector("#results-count");
 const workListElement = document.querySelector("#work-list");
-
 
 const workForm = document.querySelector("#work-form");
 const workTitleInput = document.querySelector("#work-title");
@@ -439,6 +527,11 @@ workForm.addEventListener("submit", addWork);
 closePopupButton.addEventListener("click", () => {
   successPopup.classList.remove("show");
 });
+exportButton.addEventListener("click", exportWorks);
+importButton.addEventListener("click", () => {
+  importFileInput.click();
+});
+importFileInput.addEventListener("change", importWorks);
 
 loadWorks();
 runSearch();
