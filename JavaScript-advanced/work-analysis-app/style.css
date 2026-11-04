@@ -484,6 +484,76 @@ h2 {
   opacity: 0.75;
 }
 
+/* API Section */
+.api-section {
+  margin-top: 30px;
+  padding: 24px;
+  background: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+}
+
+.api-section h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.api-section>p {
+  margin-bottom: 16px;
+  color: #666;
+  font-size: 14px;
+}
+
+#fetch-api-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+#fetch-api-button:hover {
+  opacity: 0.75;
+}
+
+#fetch-api-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#api-status {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+#api-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.api-card {
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+}
+
+.api-card h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.api-card p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
 
 @keyframes popup-appear {
   from {
@@ -581,6 +651,18 @@ h2 {
 
   .data-management-buttons button {
     width: 100%;
+  }
+
+  .api-section {
+    padding: 18px;
+  }
+
+  #fetch-api-button {
+    width: 100%;
+  }
+
+  #api-list {
+    grid-template-columns: 1fr;
   }
 
 }

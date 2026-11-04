@@ -181,6 +181,48 @@ function importWorks(event) {
   reader.readAsText(file);
 }
 
+// API Data
+async function fetchPosts() {
+  apiStatus.textContent = "データを取得しています...";
+  apiList.innerHTML = "";
+  fetchApiButton.disabled = true;
+
+  try {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
+
+    if (!response.ok) {
+      throw new Error("データ取得に失敗しました。");
+    }
+
+    const posts = await response.json();
+
+    posts.slice(0, 5).forEach((post) => {
+      const article = document.createElement("article");
+      article.className = "api-card";
+
+      const title = document.createElement("h3");
+      title.textContent = post.title;
+
+      const body = document.createElement("p");
+      body.textContent = post.body;
+
+      article.append(title, body);
+      apiList.appendChild(article);
+    });
+
+    apiStatus.textContent = "5件のデータを取得しました。";
+
+  } catch (error) {
+    apiStatus.textContent = "データの取得に失敗しました。";
+    console.error(error);
+
+  } finally {
+    fetchApiButton.disabled = false;
+  }
+}
+
 function loadWorks() {
   // localStorageから保存データを取得
   const savedData = localStorage.getItem("works");
@@ -222,6 +264,10 @@ const cancelEditButton = document.querySelector("#cancel-edit-button");
 const exportButton = document.querySelector("#export-button");
 const importButton = document.querySelector("#import-button");
 const importFileInput = document.querySelector("#import-file");
+
+const fetchApiButton = document.querySelector("#fetch-api-button");
+const apiStatus = document.querySelector("#api-status");
+const apiList = document.querySelector("#api-list");
 
 const resultCountElement = document.querySelector("#result-count");
 const resultTotalElement = document.querySelector("#result-total");
@@ -532,6 +578,7 @@ importButton.addEventListener("click", () => {
   importFileInput.click();
 });
 importFileInput.addEventListener("change", importWorks);
+fetchApiButton.addEventListener("click", fetchPosts);
 
 loadWorks();
 runSearch();
