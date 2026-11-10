@@ -1,0 +1,11 @@
+# work_data.py
+
+works = [
+    {"title": "m0s Hair", "category": "Web Site", "price": 50000},
+    {"title": "m0s MOVIE", "category": "Web Site", "price": 50000},
+    {"title": "m0s Table", "category": "Web Site", "price": 35000},
+    {"title": "Weather App", "category": "Web App", "price": 20000},
+    {"title": "Idea Vault", "category": "Web App", "price": 10000}
+]
+
+categories = ("Web Site", "Web App")
