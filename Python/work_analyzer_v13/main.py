@@ -11,7 +11,7 @@ def main():
 
     try:
         while True:
-            print("\n===== WORK ANALYZER Ver.12.0 =====")
+            print("\n===== WORK ANALYZER Ver.13.0 =====")
             print("1. 作品一覧")
             print("2. 作品検索")
             print("3. ページ表示")

@@ -7,7 +7,7 @@ def main():
     manager.show_environment()
 
     while True:
-        print("\n===== WORK ANALYZER Ver.6.0 =====")
+        print("\n===== WORK ANALYZER Ver.7.0 =====")
         print("1. 作品一覧")
         print("2. 作品追加")
         print("3. 作品検索")
