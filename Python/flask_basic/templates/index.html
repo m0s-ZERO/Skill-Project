@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>m0s Portfolio</title>
-</head>
-<body>
-    <h1>m0s Portfolio</h1>
-    <h2>Creative Developer</h2>
-    <p>Welcome to my portfolio.</p>
-</body>
-</html>
+<h1>Work List</h1>
+
+{% for work in works %}
+    <div>
+        <h2>{{ work.name }}</h2>
+        <p>Price: {{ work.price }} yen</p>
+        <p>Category: {{ work.category }}</p>
+
+        {% if work.price >= 50000 %}
+            <p>高価格案件</p>
+        {% else %}
+            <p>通常案件</p>
+        {% endif %}
+    </div>
+{% endfor %}
