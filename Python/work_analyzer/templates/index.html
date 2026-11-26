@@ -1,0 +1,25 @@
+<h1>Work Analysis App</h1>
+
+<h2>案件登録</h2>
+
+<form method="POST" action="/">
+
+    <input type="text" name="name" placeholder="案件名" required>
+
+    <input type="number" name="price" placeholder="価格" required>
+
+    <input type="text" name="category" placeholder="カテゴリー" required>
+
+    <button type="submit">登録する</button>
+
+</form>
+
+<h2>案件一覧</h2>
+
+{% for work in works %}
+    <div>
+        <h3>{{ work.name }}</h3>
+        <p>価格：{{ work.price }}円</p>
+        <p>カテゴリー：{{ work.category }}</p>
+    </div>
+{% endfor %}
